@@ -1,4 +1,9 @@
 export default {
+  index: {
+    title: "",
+    type: "page",
+    display: "hidden",
+  },
   "user-manual": {
     title: "User Manual",
     type: "page",

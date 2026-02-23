@@ -12,6 +12,7 @@ const navbar = (
   <Navbar
     logo={<b>OpenNeuro</b>}
     projectLink="https://github.com/Project-NEURIA/OpenNeuro"
+    align="left"
   />
 );
 
