@@ -5,5 +5,4 @@ const withNextra = nextra({});
 export default withNextra({
   output: "export",
   images: { unoptimized: true },
-  serverExternalPackages: ["@napi-rs/simple-git"],
 });

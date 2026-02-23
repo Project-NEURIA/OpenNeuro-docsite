@@ -21,7 +21,12 @@ jobs:
           node-version: 20
 
       - name: Update submodule to latest
-        run: git submodule update --remote
+        run: |
+          git submodule update --remote
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _openneuro
+          git diff --cached --quiet || git commit -m "chore: update docs submodule" && git push
 
       - run: npm install
 
