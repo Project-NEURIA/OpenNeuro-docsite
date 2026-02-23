@@ -11,6 +11,7 @@ export const metadata = {
 const navbar = (
   <Navbar
     logo={<b>OpenNeuro</b>}
+    logoLink="/user-manual"
     projectLink="https://github.com/Project-NEURIA/OpenNeuro"
     align="left"
   />
