@@ -31,6 +31,12 @@ jobs:
           git add _openneuro
           git diff --cached --quiet || git commit -m "chore: update docs submodule" && git push
 
+      - name: Copy docs content
+        run: |
+          rm -f content/user-manual content/developer-guide
+          cp -r _openneuro/docs/user-manual content/user-manual
+          cp -r _openneuro/docs/developer-guide content/developer-guide
+
       - run: npm install
 
       - run: npm run build
