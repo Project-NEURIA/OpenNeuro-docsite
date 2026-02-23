@@ -1,0 +1,22 @@
+{
+  "name": "openneuro-docs",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@napi-rs/simple-git": "^0.1.22",
+    "@napi-rs/simple-git-darwin-x64": "^0.1.22",
+    "next": "^16.1.6",
+    "nextra": "^4.6.1",
+    "nextra-theme-docs": "^4.6.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/node": "25.3.0",
+    "@types/react": "19.2.14"
+  }
+}
