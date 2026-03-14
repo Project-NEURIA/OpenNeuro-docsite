@@ -1,0 +1,791 @@
+1:"$Sreact.fragment"
+3:I[39756,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+4:I[37457,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+6:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+7:"$Sreact.suspense"
+9:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"ViewportBoundary"]
+b:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"MetadataBoundary"]
+d:I[68027,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"default"]
+:HL["/_next/static/chunks/221ce6682042a4f8.css","style"]
+0:{"P":null,"b":"iqyKI3OmxLoOmkOLPjbRc","c":["","developer-guide","foundations",""],"q":"","i":false,"f":[[["",{"children":[["mdxPath","developer-guide/foundations","oc"],{"children":["__PAGE__",{}]}]},"$undefined","$undefined",true],[["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/chunks/221ce6682042a4f8.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}],["$","script","script-0",{"src":"/_next/static/chunks/ff1a16fafef87110.js","async":true,"nonce":"$undefined"}],["$","script","script-1",{"src":"/_next/static/chunks/b12c1e175988307a.js","async":true,"nonce":"$undefined"}],["$","script","script-2",{"src":"/_next/static/chunks/5147636f9e20de66.js","async":true,"nonce":"$undefined"}],["$","script","script-3",{"src":"/_next/static/chunks/d80ae0e4320bdf87.js","async":true,"nonce":"$undefined"}]],"$L2"]}],{"children":[["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["$","$1","c",{"children":["$L5",null,["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],{},null,false,false]},null,false,false]},null,false,false],["$","$1","h",{"children":[null,["$","$L9",null,{"children":"$La"}],["$","div",null,{"hidden":true,"children":["$","$Lb",null,{"children":["$","$7",null,{"name":"Next.Metadata","children":"$Lc"}]}]}],null]}],false]],"m":"$undefined","G":["$d",[]],"S":true}
+e:I[68386,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ThemeConfigProvider"]
+f:I[6344,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"LastUpdated"]
+10:I[15120,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Search"]
+11:I[63178,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ThemeProvider"]
+12:I[91675,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"SkipNavLink"]
+13:I[37985,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ConfigProvider"]
+14:I[22016,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],""]
+15:I[43634,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientNavbar"]
+16:T481,M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z2:["$","html",null,{"lang":"en","dir":"ltr","suppressHydrationWarning":true,"children":[["$","head",null,{"children":["$undefined",["$","style",null,{"children":":root {\n  --nextra-primary-hue: 212deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 45%;\n  --nextra-bg: 250,250,250;\n  --nextra-content-width: 90rem;\n}\n.dark {\n  --nextra-primary-hue: 204deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 55%;\n  --nextra-bg: 17,17,17;\n}\n::selection {\n  background: hsla(var(--nextra-primary-hue),var(--nextra-primary-saturation),var(--nextra-primary-lightness),.3);\n}\nhtml {\n  background: rgb(var(--nextra-bg));\n}"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"rgb(250,250,250)"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"rgb(17,17,17)"}],"$undefined"]}],["$","body",null,{"children":["$","$Le",null,{"value":{"copyPageButton":true,"darkMode":true,"docsRepositoryBase":"https://github.com/Project-NEURIA/OpenNeuro/tree/main/docs","editLink":"Edit this page","feedback":{"content":"Question? Give us feedback","labels":"feedback"},"i18n":[],"lastUpdated":["$","$Lf",null,{}],"navigation":{"next":true,"prev":true},"search":["$","$L10",null,{}],"sidebar":{"defaultMenuCollapseLevel":2,"defaultOpen":true,"toggleButton":true},"themeSwitch":{"dark":"Dark","light":"Light","system":"System"},"toc":{"backToTop":"Scroll to top","float":true,"title":"On This Page"}},"children":["$","$L11",null,{"attribute":"class","defaultTheme":"system","disableTransitionOnChange":true,"storageKey":"theme","children":[["$","$L12",null,{}],"$undefined",["$","$L13",null,{"pageMap":[{"data":{"index":{"type":"page","title":"","display":"hidden"},"user-manual":{"type":"page","title":"User Manual"},"developer-guide":{"type":"page","title":"Developer Guide"}}},{"name":"index","route":"/","frontMatter":{"title":"Index","filePath":"content/index.mdx","timestamp":1771887922000},"title":"Index"},{"name":"user-manual","route":"/user-manual","children":[{"data":{"index":{"title":"Introduction"}}},{"name":"index","route":"/user-manual","frontMatter":{"title":"OpenNeuro","filePath":"content/user-manual/index.mdx"},"title":"Introduction"}],"title":"User Manual"},{"name":"developer-guide","route":"/developer-guide","children":[{"data":{"index":{"title":"Introduction"},"foundations":{"title":"Theoretical Foundations"}}},{"name":"index","route":"/developer-guide","frontMatter":{"title":"Developer Guide","filePath":"content/developer-guide/index.mdx"},"title":"Introduction"},{"name":"foundations","route":"/developer-guide/foundations","frontMatter":{"title":"Theoretical Foundations","filePath":"content/developer-guide/foundations.md"},"title":"Theoretical Foundations"}],"title":"Developer Guide"}],"navbar":["$","header",null,{"className":"nextra-navbar x:sticky x:top-0 x:z-30 x:w-full x:bg-transparent x:print:hidden x:max-md:[.nextra-banner:not([class$=hidden])~&]:top-(--nextra-banner-height)","children":[["$","div",null,{"className":"nextra-navbar-blur x:absolute x:-z-1 x:size-full nextra-border x:border-b x:backdrop-blur-md x:bg-nextra-bg/70"}],["$","nav",null,{"style":{"height":"var(--nextra-navbar-height)"},"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:items-center x:gap-4 x:pl-[max(env(safe-area-inset-left),1.5rem)] x:pr-[max(env(safe-area-inset-right),1.5rem)] x:justify-end","children":[["$","$L14",null,{"href":"/user-manual","className":"x:flex x:items-center x:max-md:me-auto x:transition-opacity x:focus-visible:nextra-focus x:hover:opacity-75","aria-label":"Home page","children":["$","b",null,{"children":"OpenNeuro"}]}],["$","$L15",null,{"className":"x:me-auto","children":[["$","a",null,{"href":"https://github.com/Project-NEURIA/OpenNeuro","target":"_blank","rel":"noreferrer","children":[["$","svg",null,{"fill":"currentColor","viewBox":"3 3 18 18","height":"24","aria-label":"Project repository","children":["$","path",null,{"d":"$16"}]}],false],"className":"x:focus-visible:nextra-focus"}],"$undefined","$undefined"]}]]}]]}],"footer":"$L17","children":["$L18","$L19"]}]]}]}]}]]}]
+1a:I[31277,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Switchers"]
+1b:I[34924,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"LocaleSwitch"]
+1c:I[75684,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ThemeSwitch"]
+1d:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"MobileNav"]
+17:["$","div",null,{"className":"x:bg-gray-100 x:pb-[env(safe-area-inset-bottom)] x:dark:bg-neutral-900 x:print:bg-transparent","children":[["$","$L1a",null,{"children":["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:gap-2 x:py-2 x:px-4","children":[["$","$L1b",null,{}],["$","$L1c",null,{}]]}]}],["$","hr",null,{"className":"nextra-border"}],["$","footer",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width) x:justify-center x:py-12 x:text-gray-600 x:dark:text-gray-400 x:md:justify-start x:pl-[max(env(safe-area-inset-left),1.5rem)] x:pr-[max(env(safe-area-inset-right),1.5rem)]","children":["MIT ",2026," © OpenNeuro."]}]]}]
+18:["$","$L1d",null,{}]
+19:["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]
+1e:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+5:["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L1e",null,{"value":[{"value":"Idea","id":"idea","depth":2},{"value":"1. Categories","id":"1-categories","depth":2},{"value":"Definition 1.1 (Category)","id":"definition-11-category","depth":3},{"value":"Remark 1.2","id":"remark-12","depth":3},{"value":"Example 1.3 (The category of frame types and components)","id":"example-13-the-category-of-frame-types-and-components","depth":3},{"value":"Definition 1.4 (Free category)","id":"definition-14-free-category","depth":3},{"value":"Remark 1.5","id":"remark-15","depth":3},{"value":"Remark 1.6 (Limitation)","id":"remark-16-limitation","depth":3},{"value":"2. Commutative monoidal categories","id":"2-commutative-monoidal-categories","depth":2},{"value":"Definition 2.1 (Monoidal category)","id":"definition-21-monoidal-category","depth":3},{"value":"Definition 2.2 (Symmetric monoidal category)","id":"definition-22-symmetric-monoidal-category","depth":3},{"value":"Definition 2.3 (Commutative monoidal category)","id":"definition-23-commutative-monoidal-category","depth":3},{"value":"Remark 2.4","id":"remark-24","depth":3},{"value":"Remark 2.5 (Interfaces)","id":"remark-25-interfaces","depth":3},{"value":"Remark 2.6 (Parallel composition in Comp)","id":"remark-26-parallel-composition-in-comp","depth":3},{"value":"Example 2.7 (Parallel composition in Comp)","id":"example-27-parallel-composition-in-comp","depth":3},{"value":"Remark 2.8 (Relation to Haskell’s Arrow)","id":"remark-28-relation-to-haskells-arrow","depth":3},{"value":"Remark 2.9 (Limitation)","id":"remark-29-limitation","depth":3},{"value":"3. Traced commutative monoidal categories","id":"3-traced-commutative-monoidal-categories","depth":2},{"value":"Definition 3.1 (Trace)","id":"definition-31-trace","depth":3},{"value":"Remark 3.2","id":"remark-32","depth":3},{"value":"Example 3.3 (Feedback in Comp)","id":"example-33-feedback-in-comp","depth":3},{"value":"Remark 3.4 (Relation to Haskell’s ArrowLoop)","id":"remark-34-relation-to-haskells-arrowloop","depth":3},{"value":"Remark 3.5 (Limitation)","id":"remark-35-limitation","depth":3},{"value":"4. Copy, merge, and discard","id":"4-copy-merge-and-discard","depth":2},{"value":"Definition 4.1 (Commutative comonoid)","id":"definition-41-commutative-comonoid","depth":3},{"value":"Definition 4.2 (Commutative monoid)","id":"definition-42-commutative-monoid","depth":3},{"value":"Definition 4.3 (gs-monoidal category)","id":"definition-43-gs-monoidal-category","depth":3},{"value":"Definition 4.4 (gs-monoidal category with merges)","id":"definition-44-gs-monoidal-category-with-merges","depth":3},{"value":"Example 4.5 (Fan-out, fan-in, and discard in Comp)","id":"example-45-fan-out-fan-in-and-discard-in-comp","depth":3},{"value":"5. The type lattice","id":"5-the-type-lattice","depth":2},{"value":"Definition 5.1 (Partial order on objects)","id":"definition-51-partial-order-on-objects","depth":3},{"value":"Remark 5.2 (Wiring compatibility)","id":"remark-52-wiring-compatibility","depth":3},{"value":"Remark 5.3","id":"remark-53","depth":3},{"value":"6. Higher-order components","id":"6-higher-order-components","depth":2},{"value":"Definition 6.1 (Functor)","id":"definition-61-functor","depth":3},{"value":"Example 6.2 (Generic components as endofunctors)","id":"example-62-generic-components-as-endofunctors","depth":3},{"value":"7. Putting it together","id":"7-putting-it-together","depth":2},{"value":"Remark 7.1","id":"remark-71","depth":3},{"value":"Definition 7.2 (Interpretation)","id":"definition-72-interpretation","depth":3},{"value":"Remark 7.3 (Abstract components)","id":"remark-73-abstract-components","depth":3},{"value":"8. Subgraphs and named composition","id":"8-subgraphs-and-named-composition","depth":2},{"value":"Definition 8.1 (Graph expression language)","id":"definition-81-graph-expression-language","depth":3},{"value":"Definition 8.2 (Operational semantics)","id":"definition-82-operational-semantics","depth":3},{"value":"Remark 8.3 (Grouping as environment extension)","id":"remark-83-grouping-as-environment-extension","depth":3},{"value":"Remark 8.4 (Ungrouping)","id":"remark-84-ungrouping","depth":3},{"value":"Definition 8.5 (Open and closed expressions)","id":"definition-85-open-and-closed-expressions","depth":3},{"value":"Remark 8.6 (Abstract components)","id":"remark-86-abstract-components","depth":3},{"value":"Summary","id":"summary","depth":2},{"value":"References","id":"references","depth":2}],"children":["$L1f","$L20"]}]}]
+21:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+22:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+1f:["$","$L21",null,{}]
+23:T5df4,# Theoretical Foundations
+
+## Idea
+
+OpenNeuro models real-time data processing as a network of composable components
+with typed interfaces. This page develops the categorical semantics of this system
+incrementally.
+
+## 1. Categories
+
+### Definition 1.1 (Category)
+
+A **category** **C** consists of:
+
+1. A collection of **objects** $\text{Ob}(\mathbf{C})$.
+2. For every pair of objects $A, B$, a collection of **morphisms** $\text{Hom}(A, B)$.
+3. For every object $A$, an **identity morphism** $\text{id}_A \in \text{Hom}(A, A)$.
+4. For every triple $A, B, C$ and morphisms $f \in \text{Hom}(A, B)$, $g \in \text{Hom}(B, C)$,
+   a **composition** $g \circ f \in \text{Hom}(A, C)$.
+
+subject to:
+
+- **Associativity.** For $f : A \to B$, $g : B \to C$, $h : C \to D$:
+
+$$h \circ (g \circ f) = (h \circ g) \circ f$$
+
+- **Identity.** For $f : A \to B$:
+
+$$f \circ \text{id}_A = f = \text{id}_B \circ f$$
+
+Roughly, in Python:
+
+```python
+class Category[A, B](Protocol):
+    @staticmethod
+    def id[X]() -> Category[X, X]: ...
+    def compose[C](self, other: Category[B, C]) -> Category[A, C]: ...
+    # self.compose(other.compose(h)) == self.compose(other).compose(h)
+    # id().compose(f) == f == f.compose(id())
+```
+
+### Remark 1.2
+
+A category is the minimal structure needed to talk about "things that compose."
+This is required to describe the syntax of OpenNeuro's graphical editor, since
+components can compose to form graphs.
+### Example 1.3 (The category of frame types and components)
+
+We construct a simple category **Comp** whose:
+
+- **Objects** are frame types: $\text{Audio}$, $\text{Text}$, $\text{Video}$,
+  $\text{Interrupt}$, $\text{BodyPose}$.
+- **Morphisms** are components. Each component $f$ has a typed interface $f : A \to B$,
+  meaning it receives frames of type $A$ and produces frames of type $B$. The morphisms
+  of **Comp** are the following components:
+
+$$\text{ASR} : \text{Audio} \to \text{Text}$$
+$$\text{TTS} : \text{Text} \to \text{Audio}$$
+$$\text{LLM} : \text{Text} \to \text{Text}$$
+
+the identity (passthrough) morphisms for each object, e.g.
+$\text{id}_{\text{Audio}} : \text{Audio} \to \text{Audio}$, and anything that can be
+formed by composing these.
+
+Composition is wiring: given $\text{ASR} : \text{Audio} \to \text{Text}$ and
+$\text{LLM} : \text{Text} \to \text{Text}$, their composition is:
+
+$$\text{LLM} \circ \text{ASR} : \text{Audio} \to \text{Text}$$
+
+### Definition 1.4 (Free category)
+
+Given a directed graph $G$ with nodes (objects) and edges (primitive morphisms), the
+**free category** $F(G)$ is the category whose morphisms are all finite directed paths
+in $G$, composed by path concatenation, with the empty path as identity.
+
+No equations are imposed beyond the category axioms. Two morphisms are equal if and
+only if they are the same sequence of primitive morphisms. This means every distinct
+way of composing primitives produces a distinct morphism — the free category is the
+space of all programs that can be constructed from the given primitives.
+
+See [nLab: free category](https://ncatlab.org/nlab/show/free+category).
+
+### Remark 1.5
+
+**Comp** as constructed in Example 1.3 is a free category, where the primitive
+morphisms are the (primitive) components and the objects are the frame types.
+
+### Remark 1.6 (Limitation)
+
+Consider a graph where $\text{ASR} : \text{Audio} \to \text{Text}$ and
+$\text{PoseRenderer} : \text{BodyPose} \to \text{Video}$ run side by side with no
+connection between them. This cannot be expressed in **Comp** — composition ($\circ$)
+requires the output of one morphism to match the input of the next. There is no
+operation for placing two independent morphisms in parallel. To model this, we need
+additional structure.
+
+## 2. Commutative monoidal categories
+
+### Definition 2.1 (Monoidal category)
+
+A **monoidal category** $(\mathbf{C}, \otimes, I)$ is a category $\mathbf{C}$ equipped with:
+
+1. A bifunctor $\otimes : \mathbf{C} \times \mathbf{C} \to \mathbf{C}$, called the
+   **tensor product** or **monoidal product**.
+2. A **unit object** $I$.
+3. Natural isomorphisms:
+   - **Associator:** $\alpha_{A,B,C} : (A \otimes B) \otimes C \xrightarrow{\sim} A \otimes (B \otimes C)$
+   - **Left unitor:** $\lambda_A : I \otimes A \xrightarrow{\sim} A$
+   - **Right unitor:** $\rho_A : A \otimes I \xrightarrow{\sim} A$
+
+satisfying the triangle and pentagon coherence conditions (see
+[nLab: monoidal category](https://ncatlab.org/nlab/show/monoidal+category)).
+
+### Definition 2.2 (Symmetric monoidal category)
+
+A **symmetric monoidal category** is a monoidal category equipped with a natural
+isomorphism (the **braiding**):
+
+$$\sigma_{A,B} : A \otimes B \xrightarrow{\sim} B \otimes A$$
+
+such that $\sigma_{B,A} \circ \sigma_{A,B} = \text{id}_{A \otimes B}$.
+
+### Definition 2.3 (Commutative monoidal category)
+
+A monoidal category is **commutative** (also called **strictly symmetric**) when the
+braiding is the identity:
+
+$$A \otimes B = B \otimes A$$
+
+That is, the tensor product is commutative on the nose, not merely up to isomorphism.
+
+### Remark 2.4
+
+A commutative monoidal category is a symmetric monoidal category where the symmetry
+is trivial. This is a stronger condition than mere symmetry.
+
+### Remark 2.5 (Interfaces)
+
+In the simple **Comp** of §1, objects are bare frame types like $\text{Audio}$ or
+$\text{Text}$. In practice, components often have multiple input or output ports. For
+example, an LLM component takes both text and an interrupt signal:
+
+$$\text{LLM} : (\text{text}: \text{Text},\; \text{interrupt}: \text{Interrupt}) \to \text{Text}$$
+
+We therefore refine our notion of object: objects in **Comp** are **interfaces** —
+named records of typed ports. A single-port interface like $\text{Audio}$ is just a
+record with one field. Multi-port interfaces arise naturally from the components
+themselves, not only from parallel composition.
+
+### Remark 2.6 (Parallel composition in Comp)
+
+In OpenNeuro, the tensor product is commutative on the nose at both levels:
+
+- **Objects.** Component interfaces use **named ports** (Python `NamedTuple` fields),
+  not positionally ordered tuples. The interface `(audio: Audio, video: Video)` is the
+  same object as `(video: Video, audio: Audio)` — the names determine identity, not
+  the order. So $A \otimes B = B \otimes A$.
+
+- **Morphisms.** Parallel execution has no notion of "first" or "second" — both
+  components run independently on their own threads. So $f \otimes g = g \otimes f$.
+
+This makes **Comp** a commutative monoidal category with:
+
+- $A \otimes B$ = the combined interface with all ports from $A$ and $B$.
+- $I$ = the empty interface (a component with no inputs or no outputs).
+
+### Example 2.7 (Parallel composition in Comp)
+
+Recall from Remark 1.6 that $\text{ASR}$ and $\text{PoseRenderer}$ running side by side
+could not be expressed in a plain category. With the monoidal product, we can now write:
+
+$$\text{ASR} \otimes \text{PoseRenderer} : \text{Audio} \otimes \text{BodyPose} \to \text{Text} \otimes \text{Video}$$
+
+Both components run in parallel. The composite interface has two input ports
+($\text{Audio}$, $\text{BodyPose}$) and two output ports ($\text{Text}$, $\text{Video}$).
+
+### Remark 2.8 (Relation to Haskell's Arrow)
+
+The `Arrow` type class in Haskell corresponds closely to a (strict) monoidal category.
+The operations are:
+
+| Haskell Arrow | Categorical |
+|---|---|
+| `arr f` | lifting a pure function to a morphism |
+| `>>>` | sequential composition ($\circ$) |
+| `***` | parallel composition ($\otimes$) |
+| `first f` | $f \otimes \text{id}$ |
+
+See [nLab: Arrow](https://ncatlab.org/nlab/show/Arrow).
+
+### Remark 2.9 (Limitation)
+
+Consider an $\text{AgentState} : \text{Text} \to \text{History}$ component that
+accumulates conversation history, and an $\text{LLM} : \text{History} \to \text{Text}$
+component. Composing them sequentially gives:
+
+$$\text{LLM} \circ \text{AgentState} : \text{Text} \to \text{Text}$$
+
+But we want the $\text{Text}$ output of $\text{LLM}$ to feed back into
+$\text{AgentState}$, forming a loop — the agent responds, the response is appended to
+history, and the updated history feeds the next LLM call. A commutative monoidal
+category has no operation for this — there is no way to wire an output back into an
+input. To model feedback, we need trace.
+
+## 3. Traced commutative monoidal categories
+
+### Definition 3.1 (Trace)
+
+Let $(\mathbf{C}, \otimes, I)$ be a symmetric monoidal category. A **trace** on
+$\mathbf{C}$ is a family of functions:
+
+$$\text{Tr}^X_{A,B} : \text{Hom}(A \otimes X, \; B \otimes X) \to \text{Hom}(A, B)$$
+
+for every triple of objects $A, B, X$, satisfying naturality and coherence axioms
+(see [nLab: traced monoidal category](https://ncatlab.org/nlab/show/traced+monoidal+category)).
+
+### Remark 3.2
+
+Intuitively, $\text{Tr}^X_{A,B}$ takes a morphism that has an "extra" input and output
+of type $X$ and produces a morphism where $X$ is wired internally as a feedback loop.
+The external interface shrinks from $(A \otimes X) \to (B \otimes X)$ to just $A \to B$.
+
+### Example 3.3 (Feedback in Comp)
+
+Recall from Remark 2.9 the $\text{AgentState} : \text{Text} \to \text{History}$ and
+$\text{LLM} : \text{History} \to \text{Text}$ components. Their composition
+$\text{LLM} \circ \text{AgentState} : \text{Text} \to \text{Text}$ is a morphism
+with matching input and output types. We can model this as a morphism with an extra
+feedback channel:
+
+$$P : \text{Text} \otimes \text{Text} \to \text{Text} \otimes \text{Text}$$
+
+Applying trace over $\text{Text}$:
+
+$$\text{Tr}^{\text{Text}}(P) : \text{Text} \to \text{Text}$$
+
+The feedback channel becomes internal — the LLM's text output feeds back into
+AgentState, whose history output feeds the next LLM call. From the outside, it is
+simply a $\text{Text} \to \text{Text}$ component.
+
+### Remark 3.4 (Relation to Haskell's ArrowLoop)
+
+The `ArrowLoop` type class adds feedback to `Arrow`:
+
+```haskell
+class Arrow a => ArrowLoop a where
+    loop :: a (b, d) (c, d) -> a b c
+```
+
+This is exactly the trace operator: `loop` takes a morphism of type $(B \otimes D) \to (C \otimes D)$
+and produces one of type $B \to C$ by feeding $D$ back. The `rec` keyword in arrow notation
+is syntactic sugar for `loop`.
+
+### Remark 3.5 (Limitation)
+
+Consider an $\text{ASR} : \text{Audio} \to \text{Text}$ whose text output should feed
+both an $\text{LLM}$ and a $\text{Logger}$ simultaneously. Or two independent
+$\text{ASR}$ components whose text outputs should merge into a single $\text{LLM}$
+input. A traced commutative monoidal category has no operation for either — every
+output goes to exactly **one** input. We need:
+
+- **Fan-out (copying):** one output feeds multiple downstream components.
+- **Fan-in (merging):** multiple outputs feed into one input.
+- **Discard:** an output that goes nowhere.
+
+## 4. Copy, merge, and discard
+
+### Definition 4.1 (Commutative comonoid)
+
+Let $(\mathbf{C}, \otimes, I)$ be a monoidal category. A **commutative comonoid** on
+an object $A$ is a pair of morphisms:
+
+$$\Delta_A : A \to A \otimes A \quad \text{(copy)}$$
+$$\varepsilon_A : A \to I \quad \text{(discard)}$$
+
+satisfying coassociativity, counitality, and commutativity (see
+[nLab: comonoid](https://ncatlab.org/nlab/show/comonoid)).
+
+### Definition 4.2 (Commutative monoid)
+
+Dually, a **commutative monoid** on an object $A$ is a pair of morphisms:
+
+$$\nabla_A : A \otimes A \to A \quad \text{(merge)}$$
+$$\eta_A : I \to A \quad \text{(create)}$$
+
+satisfying associativity, unitality, and commutativity (see
+[nLab: monoid](https://ncatlab.org/nlab/show/monoid+in+a+monoidal+category)).
+
+### Definition 4.3 (gs-monoidal category)
+
+A **gs-monoidal category** (garbage-sharing monoidal category) is a symmetric monoidal
+category in which every object is equipped with a commutative comonoid structure
+$(\Delta_A, \varepsilon_A)$ that is natural in $A$.
+
+"Garbage" refers to discard ($\varepsilon$), and "sharing" refers to copy ($\Delta$).
+
+See [Corradini & Gadducci, 1999] for the original definition.
+
+### Definition 4.4 (gs-monoidal category with merges)
+
+We extend the gs-monoidal structure by additionally equipping every object with a natural
+commutative monoid structure $(\nabla_A, \eta_A)$. This gives every object the structure
+of a **commutative bimonoid**: both a commutative monoid and a commutative comonoid.
+
+### Example 4.5 (Fan-out, fan-in, and discard in Comp)
+
+In OpenNeuro, these operations are provided by the channel system:
+
+- **Copy ($\Delta$).** A `Sender` holds a list of `Channel`s. When it sends a frame,
+  every channel receives a copy. This is fan-out: one output going to multiple
+  downstream components.
+
+- **Discard ($\varepsilon$).** A `Sender` with no connected channels. The frame is
+  produced but nobody reads it. The data is silently discarded.
+
+- **Merge ($\nabla$).** Multiple `Sender`s connected to the same `Channel`. Frames
+  from different upstream components are interleaved by arrival order into a single
+  stream.
+
+- **Create ($\eta$).** A source component (e.g. `Microphone`) that produces frames
+  from nothing — it has no input channels, only outputs.
+
+These operations are inherent to the channel design, not bolted on. Any component's
+output can fan out to arbitrarily many downstream components, and any input can receive
+from arbitrarily many upstream components, without any special wiring logic.
+
+## 5. The type lattice
+
+### Definition 5.1 (Partial order on objects)
+
+The objects of **Comp** carry a **partial order** $\leq$ given by the subtyping
+relation on frame types. We write $A \leq B$ when $A$ is a subtype of $B$.
+
+In OpenNeuro, this is the class hierarchy:
+
+```
+            Frame
+          / |  |  \
+   Audio  Text  Video  BodyPose  ...
+           |
+          EOS
+```
+
+So $\text{EOS} \leq \text{Text} \leq \text{Frame}$, but $\text{Audio}$ and
+$\text{Video}$ are incomparable.
+
+### Remark 5.2 (Wiring compatibility)
+
+A connection from a $\text{Sender}[A]$ to a $\text{Receiver}[B]$ is valid when
+$A \leq B$. This means a component that outputs $\text{EOS}$ frames can wire into
+any input that accepts $\text{Text}$, because $\text{EOS} \leq \text{Text}$.
+
+The partial order gives rise to implicit coercion morphisms $\iota_{A,B} : A \to B$
+for every $A \leq B$. These are the "silent" type conversions that the system handles
+without the user writing an explicit adapter component.
+
+### Remark 5.3
+
+In categorical terms, the partial order makes the collection of objects a
+[poset](https://ncatlab.org/nlab/show/partial+order), and the coercion morphisms
+are the unique morphisms guaranteed by the partial order. This enriches our category
+with a subtyping discipline: composition respects the order, and the monoidal product
+extends it componentwise.
+
+## 6. Higher-order components
+
+### Definition 6.1 (Functor)
+
+A **functor** $F : \mathbf{C} \to \mathbf{D}$ between two categories consists of:
+
+1. A mapping on objects: $A \mapsto F(A)$.
+2. A mapping on morphisms: $(f : A \to B) \mapsto (F(f) : F(A) \to F(B))$.
+
+preserving identity and composition:
+
+$$F(\text{id}_A) = \text{id}_{F(A)}$$
+$$F(g \circ f) = F(g) \circ F(f)$$
+
+An **endofunctor** is a functor from a category to itself: $F : \mathbf{C} \to \mathbf{C}$.
+
+See [nLab: functor](https://ncatlab.org/nlab/show/functor).
+
+### Example 6.2 (Generic components as endofunctors)
+
+A component that is **generic over its frame type** defines an endofunctor on **Comp**.
+For instance, a `Passthrough[T]` component — parameterized by a type $T$ — maps:
+
+- Each object $T$ to itself.
+- Each morphism $f : A \to B$ to a morphism $\text{Passthrough}(f) : A \to B$ that applies
+  $f$ while passing data through.
+
+More practical examples of endofunctors on **Comp** include:
+
+- A **profiler** that wraps any component and adds timing measurements, without changing
+  its interface type.
+- A **retry wrapper** that takes any component $f : A \to B$ and produces a fault-tolerant
+  version $\text{Retry}(f) : A \to B$.
+
+These are structure-preserving: wrapping a composition is the same as composing the
+wrapped versions. That is precisely the functor law $F(g \circ f) = F(g) \circ F(f)$.
+
+## 7. Putting it together
+
+### Remark 7.1
+
+Extending the free category of Definition 1.4 with all the structure introduced in
+§2–§4, OpenNeuro's graph language generates a **free traced commutative gs-monoidal
+category with merges** — the free category built from the declared components as
+primitive morphisms, closed under sequential composition ($\circ$), parallel composition
+($\otimes$), trace ($\text{Tr}$), copy ($\Delta$), merge ($\nabla$), and discard
+($\varepsilon$), with no additional equations.
+
+Every morphism in this free category corresponds to a graph that can be constructed in
+the system. Every constructible graph corresponds to a morphism. The free category is
+exactly the space of all programs expressible in the system.
+
+### Definition 7.2 (Interpretation)
+
+An **interpretation** of the free category is a structure-preserving functor:
+
+$$\llbracket - \rrbracket : F(\text{Generators}) \to \mathbf{Sem}$$
+
+from the free category into a **semantic category** $\mathbf{Sem}$ where morphisms have
+computational meaning (e.g., actual running threads passing real frames through channels).
+
+The interpretation functor must preserve all structure:
+
+- $\llbracket g \circ f \rrbracket = \llbracket g \rrbracket \circ \llbracket f \rrbracket$
+- $\llbracket f \otimes g \rrbracket = \llbracket f \rrbracket \otimes \llbracket g \rrbracket$
+- $\llbracket \text{Tr}^X(f) \rrbracket = \text{Tr}^{\llbracket X \rrbracket}(\llbracket f \rrbracket)$
+
+Because the source is free, the interpretation is **uniquely determined** by its action
+on the generators. Once you assign a concrete implementation to each primitive component,
+the semantics of every composite graph is fixed automatically by functoriality.
+
+### Remark 7.3 (Abstract components)
+
+A generator in the free category that has not been assigned an interpretation is an
+**abstract component** — declared with a typed interface but no implementation. A graph
+containing abstract components cannot be fully interpreted (executed) until every
+abstract generator is given a concrete meaning.
+
+This is the categorical account of "plug-in" or "placeholder" components: the graph
+structure is well-defined regardless of whether implementations exist, but execution
+requires a complete interpretation.
+
+## 8. Subgraphs and named composition
+
+### Definition 8.1 (Graph expression language)
+
+We define an **expression language** for morphisms in the free category. An expression
+$e$ has the following grammar:
+
+$$e \;\;::=\;\; \text{prim}(c) \;\mid\; e_1 \circ e_2 \;\mid\; e_1 \otimes e_2 \;\mid\; \text{name}(x)$$
+
+where $c$ ranges over primitive components (generators), and $x$ ranges over names
+drawn from an **environment** $\Gamma : \text{Name} \to \text{Value}$, where values are
+morphisms in the free category.
+
+### Definition 8.2 (Operational semantics)
+
+The **evaluation judgment** $\Gamma \vdash e \Downarrow v$ maps an expression $e$ under
+environment $\Gamma$ to a morphism $v$ in $F(G)$:
+
+$$\frac{}{\Gamma \vdash \text{prim}(c) \Downarrow c}$$
+
+$$\frac{\Gamma \vdash e_1 \Downarrow f \quad \Gamma \vdash e_2 \Downarrow g}{\Gamma \vdash e_1 \circ e_2 \Downarrow f \circ g}$$
+
+$$\frac{\Gamma \vdash e_1 \Downarrow f \quad \Gamma \vdash e_2 \Downarrow g}{\Gamma \vdash e_1 \otimes e_2 \Downarrow f \otimes g}$$
+
+$$\frac{\Gamma(x) = v}{\Gamma \vdash \text{name}(x) \Downarrow v}$$
+
+### Remark 8.3 (Grouping as environment extension)
+
+When a user selects a subgraph and groups it under a name $x$, this corresponds to
+**extending the environment**:
+
+$$\Gamma' = \Gamma[x \mapsto v]$$
+
+where $v$ is the morphism obtained by evaluating the selected subexpression. For example,
+given a graph with $\text{ASR} : \text{Audio} \to \text{Text}$ and
+$\text{LLM} : \text{Text} \to \text{Text}$, the expression is:
+
+$$e = \text{LLM} \circ \text{ASR}$$
+
+Grouping under the name "understanding" produces:
+
+$$\Gamma' = \Gamma[\text{understanding} \mapsto \text{LLM} \circ \text{ASR}]$$
+
+The graph can now be written as $\text{name}(\text{understanding})$, which evaluates to
+the same morphism. The grouping operation does not change the denoted morphism — it
+introduces a **name** for a composite, making it referenceable.
+
+### Remark 8.4 (Ungrouping)
+
+Ungrouping is the inverse: given $\Gamma' = \Gamma[x \mapsto v]$, ungrouping $x$
+removes the binding and inlines $v$ back into the expression, recovering the original
+environment $\Gamma$.
+
+### Definition 8.5 (Open and closed expressions)
+
+An expression $e$ is **closed** under environment $\Gamma$ when every $\text{name}(x)$
+occurring in $e$ satisfies $x \in \text{dom}(\Gamma)$. A closed expression can be fully
+evaluated by the rules of Definition 8.2.
+
+An expression is **open** when it contains free names — $\text{name}(x)$ where
+$x \notin \text{dom}(\Gamma)$. Evaluation gets stuck at any free name since no rule
+applies.
+
+### Remark 8.6 (Abstract components)
+
+An open expression contains **abstract components**: it has a well-defined typed interface
+(its input and output types can be inferred from the structure), but it cannot be
+executed because some subexpressions are unresolved.
+
+To execute an abstract graph, the user must supply a **substitution**
+$\sigma : \text{FreeNames}(e) \to \text{Value}$ mapping each free name to a concrete
+morphism of matching type. Applying the substitution closes the expression:
+
+$$\Gamma' = \Gamma \cup \sigma$$
+
+$$\Gamma' \vdash e \Downarrow v$$
+
+This is the expression-language account of the abstract components described in
+Remark 7.3: an unbound name plays the same role as a generator without an
+interpretation — a typed placeholder that must be filled in before the graph can run.
+
+## Summary
+
+The following table summarizes the correspondence between OpenNeuro concepts and their
+categorical counterparts.
+
+| OpenNeuro | Category theory | Introduced in |
+|---|---|---|
+| Frame types (`Audio`, `Text`, `Video`, ...) | Objects | §1 |
+| Components (`Component[I, O]`) | Morphisms | §1 |
+| Wiring output to input | Sequential composition ($\circ$) | §1 |
+| All constructible graphs | Free category | §1 |
+| Running side by side | Parallel composition ($\otimes$) | §2 |
+| Named ports (order doesn't matter) | Commutativity of $\otimes$ | §2 |
+| Output wired back to input | Trace ($\text{Tr}^X$) | §3 |
+| Fan-out (one output, many inputs) | Copy ($\Delta$) | §4 |
+| Unused output | Discard ($\varepsilon$) | §4 |
+| Fan-in (many outputs, one input) | Merge ($\nabla$) | §4 |
+| Source component (no inputs) | Create ($\eta$) | §4 |
+| Frame subtyping (`EOS ≤ Text`) | Partial order on objects | §5 |
+| Generic / higher-order component | Endofunctor | §6 |
+| Runtime execution | Interpretation functor ($\llbracket - \rrbracket$) | §7 |
+| Subgraph (named composite) | Named expression / environment binding | §8 |
+| Group operation | Environment extension ($\Gamma' = \Gamma[x \mapsto v]$) | §8 |
+| Ungroup operation | Environment removal / inlining | §8 |
+| Abstract component (placeholder) | Open expression (free name) | §8 |
+| Supplying implementations | Substitution closing the expression | §8 |
+
+## References
+
+- [nLab: category](https://ncatlab.org/nlab/show/category)
+- [nLab: monoidal category](https://ncatlab.org/nlab/show/monoidal+category)
+- [nLab: symmetric monoidal category](https://ncatlab.org/nlab/show/symmetric+monoidal+category)
+- [nLab: traced monoidal category](https://ncatlab.org/nlab/show/traced+monoidal+category)
+- [nLab: comonoid](https://ncatlab.org/nlab/show/comonoid)
+- [nLab: monoid in a monoidal category](https://ncatlab.org/nlab/show/monoid+in+a+monoidal+category)
+- [nLab: free category](https://ncatlab.org/nlab/show/free+category)
+- [nLab: functor](https://ncatlab.org/nlab/show/functor)
+- Corradini, A. & Gadducci, F. (1999). "An algebraic presentation of term graphs, via gs-monoidal categories."
+- Hasegawa, M. (1997). "Recursion from cyclic sharing: traced monoidal categories and models of cyclic lambda calculi."20:["$","$L22",null,{"metadata":"$2:props:children:1:props:children:props:children:props:children:2:props:pageMap:3:children:2:frontMatter","bottomContent":"$undefined","sourceCode":"$23","children":["$L24","$L25"]}]
+26:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+24:["$","div",null,{"id":"nextra-skip-nav"}]
+25:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"id":"$undefined","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Theoretical Foundations","$undefined"]}],"\n",["$","h2",null,{"id":"idea","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Idea",["$","$L26",null,{"id":"idea"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"OpenNeuro models real-time data processing as a network of composable components\nwith typed interfaces. This page develops the categorical semantics of this system\nincrementally."}],"\n",["$","h2",null,{"id":"1-categories","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["1. Categories",["$","$L26",null,{"id":"1-categories"}]]}],"\n",["$","h3",null,{"id":"definition-11-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 1.1 (Category)",["$","$L26",null,{"id":"definition-11-category"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"category"}]," ",["$","strong",null,{"children":"C"}]," consists of:"]}],"\n",["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["A collection of ",["$","strong",null,{"children":"objects"}]," $\\text{Ob}(\\mathbf{C})$."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["For every pair of objects $A, B$, a collection of ",["$","strong",null,{"children":"morphisms"}]," $\\text{Hom}(A, B)$."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["For every object $A$, an ",["$","strong",null,{"children":"identity morphism"}]," $\\text{id}_A \\in \\text{Hom}(A, A)$."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["For every triple $A, B, C$ and morphisms $f \\in \\text{Hom}(A, B)$, $g \\in \\text{Hom}(B, C)$,\na ",["$","strong",null,{"children":"composition"}]," $g \\circ f \\in \\text{Hom}(A, C)$."]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"subject to:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Associativity."}]," For $f : A \\to B$, $g : B \\to C$, $h : C \\to D$:"]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$h \\circ (g \\circ f) = (h \\circ g) \\circ f$$"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Identity."}]," For $f : A \\to B$:"]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$f \\circ \\text{id}_A = f = \\text{id}_B \\circ f$$"}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Roughly, in Python:"}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":["$L27",false]}],"$L28"]}]]}],"\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37","\n","$L38","\n","$L39","\n","$L3a","\n","$L3b","\n","$L3c","\n","$L3d","\n","$L3e","\n","$L3f","\n","$L40","\n","$L41","\n","$L42","\n","$L43","\n","$L44","\n","$L45","\n","$L46","\n","$L47","\n","$L48","\n","$L49","\n","$L4a","\n","$L4b","\n","$L4c","\n","$L4d","\n","$L4e","\n","$L4f","\n","$L50","\n","$L51","\n","$L52","\n","$L53","\n","$L54","\n","$L55","\n","$L56","\n","$L57","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$L58","\n","$L59","\n","$L5a","\n","$L5b","\n","$L5c","\n","$L5d","\n","$L5e","\n","$L5f","\n","$L60","\n","$L61","\n","$L62","\n","$L63","\n","$L64","\n","$L65","\n","$L66","\n","$L67","\n","$L68","\n","$L69","\n","$L6a","\n","$L6b","\n","$L6c","\n","$L6d","\n","$L6e","\n","$L6f","\n","$L70","\n","$L71","\n","$L72","\n","$L73","\n","$L74","\n","$L75","\n","$L76","\n","$L77","\n","$L78","\n","$L79","\n","$L7a","\n","$L7b","\n","$L7c","\n","$L7d","\n","$L7e","\n","$L7f","\n","$L80","\n","$L81","\n","$L82","\n","$L83","\n","$L84","\n","$L85","\n","$L86","\n","$L87","\n","$L88","\n","$L89","\n","$L8a","\n","$L8b","\n","$L8c","\n","$L8d","\n","$L8e","\n","$L8f","\n","$L90","\n","$L91","\n","$L92","\n","$L93","\n","$L94","\n","$L95","\n","$L96","\n","$L97","\n","$L98","\n","$L99","\n","$L9a","\n","$L9b","\n","$L9c","\n","$L9d","\n","$L9e","\n","$L9f","\n","$La0","\n","$La1","\n","$La2","\n","$La3","\n","$La4","\n","$La5","\n","$La6","\n","$La7","\n","$La8","\n","$La9","\n","$Laa","\n","$Lab","\n","$Lac","\n","$Lad","\n","$Lae","\n","$Laf","\n","$Lb0","\n","$Lb1","\n","$Lb2","\n","$Lb3","\n","$Lb4","\n","$Lb5","\n","$Lb6","\n","$Lb7","\n","$Lb8","\n","$Lb9","\n","$Lba","\n","$Lbb","\n","$Lbc","\n","$Lbd","\n","$Lbe","\n","$Lbf","\n","$Lc0","\n","$Lc1","\n","$Lc2","\n","$Lc3","\n","$Lc4","\n","$Lc5","\n","$Lc6","\n","$Lc7","\n","$Lc8","\n","$Lc9","\n","$Lca","\n","$Lcb","\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n","$Lcc","\n","$Lcd","\n","$Lce"]}]
+cf:I[83987,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ToggleWordWrapButton"]
+27:["$","$Lcf",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}]
+28:["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" Category[A, B](Protocol):"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"    @"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"staticmethod"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"    def"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" id"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"[X]() "}],["$","span",null,{"style":{"--shiki-light":"#B31D28","--shiki-light-font-style":"italic","--shiki-dark":"#FDAEB7","--shiki-dark-font-style":"italic"},"children":"->"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" Category[X, X]: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"..."}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"    def"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" compose[C]("}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"self"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":", other: Category[B, C]) "}],["$","span",null,{"style":{"--shiki-light":"#B31D28","--shiki-light-font-style":"italic","--shiki-dark":"#FDAEB7","--shiki-dark-font-style":"italic"},"children":"->"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" Category[A, C]: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"..."}]]}],"\n",["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"    # self.compose(other.compose(h)) == self.compose(other).compose(h)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"    # id().compose(f) == f == f.compose(id())"}]}]]}]
+29:["$","h3",null,{"id":"remark-12","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 1.2",["$","$L26",null,{"id":"remark-12"}]]}]
+2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"A category is the minimal structure needed to talk about “things that compose.”\nThis is required to describe the syntax of OpenNeuro’s graphical editor, since\ncomponents can compose to form graphs."}]
+2b:["$","h3",null,{"id":"example-13-the-category-of-frame-types-and-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Example 1.3 (The category of frame types and components)",["$","$L26",null,{"id":"example-13-the-category-of-frame-types-and-components"}]]}]
+2c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["We construct a simple category ",["$","strong",null,{"children":"Comp"}]," whose:"]}]
+2d:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Objects"}]," are frame types: $\\text{Audio}$, $\\text{Text}$, $\\text{Video}$,\n$\\text{Interrupt}$, $\\text{BodyPose}$."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Morphisms"}]," are components. Each component $f$ has a typed interface $f : A \\to B$,\nmeaning it receives frames of type $A$ and produces frames of type $B$. The morphisms\nof ",["$","strong",null,{"children":"Comp"}]," are the following components:"]}],"\n"]}]
+2e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{ASR} : \\text{Audio} \\to \\text{Text}$$\n$$\\text{TTS} : \\text{Text} \\to \\text{Audio}$$\n$$\\text{LLM} : \\text{Text} \\to \\text{Text}$$"}]
+2f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"the identity (passthrough) morphisms for each object, e.g.\n$\\text{id}_{\\text{Audio}} : \\text{Audio} \\to \\text{Audio}$, and anything that can be\nformed by composing these."}]
+30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Composition is wiring: given $\\text{ASR} : \\text{Audio} \\to \\text{Text}$ and\n$\\text{LLM} : \\text{Text} \\to \\text{Text}$, their composition is:"}]
+31:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{LLM} \\circ \\text{ASR} : \\text{Audio} \\to \\text{Text}$$"}]
+32:["$","h3",null,{"id":"definition-14-free-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 1.4 (Free category)",["$","$L26",null,{"id":"definition-14-free-category"}]]}]
+33:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Given a directed graph $G$ with nodes (objects) and edges (primitive morphisms), the\n",["$","strong",null,{"children":"free category"}]," $F(G)$ is the category whose morphisms are all finite directed paths\nin $G$, composed by path concatenation, with the empty path as identity."]}]
+34:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"No equations are imposed beyond the category axioms. Two morphisms are equal if and\nonly if they are the same sequence of primitive morphisms. This means every distinct\nway of composing primitives produces a distinct morphism — the free category is the\nspace of all programs that can be constructed from the given primitives."}]
+35:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["See ",["$","a",null,{"href":"https://ncatlab.org/nlab/show/free+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: free category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],"."]}]
+36:["$","h3",null,{"id":"remark-15","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 1.5",["$","$L26",null,{"id":"remark-15"}]]}]
+37:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Comp"}]," as constructed in Example 1.3 is a free category, where the primitive\nmorphisms are the (primitive) components and the objects are the frame types."]}]
+38:["$","h3",null,{"id":"remark-16-limitation","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 1.6 (Limitation)",["$","$L26",null,{"id":"remark-16-limitation"}]]}]
+39:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Consider a graph where $\\text{ASR} : \\text{Audio} \\to \\text{Text}$ and\n$\\text{PoseRenderer} : \\text{BodyPose} \\to \\text{Video}$ run side by side with no\nconnection between them. This cannot be expressed in ",["$","strong",null,{"children":"Comp"}]," — composition ($\\circ$)\nrequires the output of one morphism to match the input of the next. There is no\noperation for placing two independent morphisms in parallel. To model this, we need\nadditional structure."]}]
+3a:["$","h2",null,{"id":"2-commutative-monoidal-categories","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["2. Commutative monoidal categories",["$","$L26",null,{"id":"2-commutative-monoidal-categories"}]]}]
+3b:["$","h3",null,{"id":"definition-21-monoidal-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 2.1 (Monoidal category)",["$","$L26",null,{"id":"definition-21-monoidal-category"}]]}]
+3c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"monoidal category"}]," $(\\mathbf{C}, \\otimes, I)$ is a category $\\mathbf{C}$ equipped with:"]}]
+3d:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["A bifunctor $\\otimes : \\mathbf{C} \\times \\mathbf{C} \\to \\mathbf{C}$, called the\n",["$","strong",null,{"children":"tensor product"}]," or ",["$","strong",null,{"children":"monoidal product"}],"."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["A ",["$","strong",null,{"children":"unit object"}]," $I$."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Natural isomorphisms:\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Associator:"}]," $\\alpha_{A,B,C} : (A \\otimes B) \\otimes C \\xrightarrow{\\sim} A \\otimes (B \\otimes C)$"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Left unitor:"}]," $\\lambda_A : I \\otimes A \\xrightarrow{\\sim} A$"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Right unitor:"}]," $\\rho_A : A \\otimes I \\xrightarrow{\\sim} A$"]}],"\n"]}],"\n"]}],"\n"]}]
+3e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["satisfying the triangle and pentagon coherence conditions (see\n",["$","a",null,{"href":"https://ncatlab.org/nlab/show/monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],")."]}]
+3f:["$","h3",null,{"id":"definition-22-symmetric-monoidal-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 2.2 (Symmetric monoidal category)",["$","$L26",null,{"id":"definition-22-symmetric-monoidal-category"}]]}]
+40:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"symmetric monoidal category"}]," is a monoidal category equipped with a natural\nisomorphism (the ",["$","strong",null,{"children":"braiding"}],"):"]}]
+41:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\sigma_{A,B} : A \\otimes B \\xrightarrow{\\sim} B \\otimes A$$"}]
+42:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"such that $\\sigma_{B,A} \\circ \\sigma_{A,B} = \\text{id}_{A \\otimes B}$."}]
+43:["$","h3",null,{"id":"definition-23-commutative-monoidal-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 2.3 (Commutative monoidal category)",["$","$L26",null,{"id":"definition-23-commutative-monoidal-category"}]]}]
+44:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A monoidal category is ",["$","strong",null,{"children":"commutative"}]," (also called ",["$","strong",null,{"children":"strictly symmetric"}],") when the\nbraiding is the identity:"]}]
+45:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$A \\otimes B = B \\otimes A$$"}]
+46:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"That is, the tensor product is commutative on the nose, not merely up to isomorphism."}]
+47:["$","h3",null,{"id":"remark-24","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 2.4",["$","$L26",null,{"id":"remark-24"}]]}]
+48:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"A commutative monoidal category is a symmetric monoidal category where the symmetry\nis trivial. This is a stronger condition than mere symmetry."}]
+49:["$","h3",null,{"id":"remark-25-interfaces","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 2.5 (Interfaces)",["$","$L26",null,{"id":"remark-25-interfaces"}]]}]
+4a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["In the simple ",["$","strong",null,{"children":"Comp"}]," of §1, objects are bare frame types like $\\text{Audio}$ or\n$\\text{Text}$. In practice, components often have multiple input or output ports. For\nexample, an LLM component takes both text and an interrupt signal:"]}]
+4b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{LLM} : (\\text{text}: \\text{Text},; \\text{interrupt}: \\text{Interrupt}) \\to \\text{Text}$$"}]
+4c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["We therefore refine our notion of object: objects in ",["$","strong",null,{"children":"Comp"}]," are ",["$","strong",null,{"children":"interfaces"}]," —\nnamed records of typed ports. A single-port interface like $\\text{Audio}$ is just a\nrecord with one field. Multi-port interfaces arise naturally from the components\nthemselves, not only from parallel composition."]}]
+4d:["$","h3",null,{"id":"remark-26-parallel-composition-in-comp","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 2.6 (Parallel composition in Comp)",["$","$L26",null,{"id":"remark-26-parallel-composition-in-comp"}]]}]
+4e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"In OpenNeuro, the tensor product is commutative on the nose at both levels:"}]
+4f:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Objects."}]," Component interfaces use ",["$","strong",null,{"children":"named ports"}]," (Python ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"NamedTuple"}]," fields),\nnot positionally ordered tuples. The interface ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"(audio: Audio, video: Video)"}]," is the\nsame object as ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"(video: Video, audio: Audio)"}]," — the names determine identity, not\nthe order. So $A \\otimes B = B \\otimes A$."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Morphisms."}]," Parallel execution has no notion of “first” or “second” — both\ncomponents run independently on their own threads. So $f \\otimes g = g \\otimes f$."]}],"\n"]}],"\n"]}]
+50:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["This makes ",["$","strong",null,{"children":"Comp"}]," a commutative monoidal category with:"]}]
+51:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"$$A \\otimes B$ = the combined interface with all ports from $A$ and $B$."}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"$$I$ = the empty interface (a component with no inputs or no outputs)."}],"\n"]}]
+52:["$","h3",null,{"id":"example-27-parallel-composition-in-comp","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Example 2.7 (Parallel composition in Comp)",["$","$L26",null,{"id":"example-27-parallel-composition-in-comp"}]]}]
+53:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Recall from Remark 1.6 that $\\text{ASR}$ and $\\text{PoseRenderer}$ running side by side\ncould not be expressed in a plain category. With the monoidal product, we can now write:"}]
+54:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{ASR} \\otimes \\text{PoseRenderer} : \\text{Audio} \\otimes \\text{BodyPose} \\to \\text{Text} \\otimes \\text{Video}$$"}]
+55:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Both components run in parallel. The composite interface has two input ports\n($\\text{Audio}$, $\\text{BodyPose}$) and two output ports ($\\text{Text}$, $\\text{Video}$)."}]
+56:["$","h3",null,{"id":"remark-28-relation-to-haskells-arrow","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 2.8 (Relation to Haskell’s Arrow)",["$","$L26",null,{"id":"remark-28-relation-to-haskells-arrow"}]]}]
+57:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Arrow"}]," type class in Haskell corresponds closely to a (strict) monoidal category.\nThe operations are:"]}]
+58:["$","table",null,{"className":"x:block x:overflow-x-auto nextra-scrollbar x:not-first:mt-[1.25em] x:p-0","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Haskell Arrow","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Categorical","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"arr f"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"lifting a pure function to a morphism","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":">>>"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"sequential composition ($\\circ$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"***"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"parallel composition ($\\otimes$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"first f"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"$$f \\otimes \\text{id}$","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]]}]]}]
+59:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["See ",["$","a",null,{"href":"https://ncatlab.org/nlab/show/Arrow","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: Arrow",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],"."]}]
+5a:["$","h3",null,{"id":"remark-29-limitation","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 2.9 (Limitation)",["$","$L26",null,{"id":"remark-29-limitation"}]]}]
+5b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Consider an $\\text{AgentState} : \\text{Text} \\to \\text{History}$ component that\naccumulates conversation history, and an $\\text{LLM} : \\text{History} \\to \\text{Text}$\ncomponent. Composing them sequentially gives:"}]
+5c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{LLM} \\circ \\text{AgentState} : \\text{Text} \\to \\text{Text}$$"}]
+5d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"But we want the $\\text{Text}$ output of $\\text{LLM}$ to feed back into\n$\\text{AgentState}$, forming a loop — the agent responds, the response is appended to\nhistory, and the updated history feeds the next LLM call. A commutative monoidal\ncategory has no operation for this — there is no way to wire an output back into an\ninput. To model feedback, we need trace."}]
+5e:["$","h2",null,{"id":"3-traced-commutative-monoidal-categories","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["3. Traced commutative monoidal categories",["$","$L26",null,{"id":"3-traced-commutative-monoidal-categories"}]]}]
+5f:["$","h3",null,{"id":"definition-31-trace","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 3.1 (Trace)",["$","$L26",null,{"id":"definition-31-trace"}]]}]
+60:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Let $(\\mathbf{C}, \\otimes, I)$ be a symmetric monoidal category. A ",["$","strong",null,{"children":"trace"}]," on\n$\\mathbf{C}$ is a family of functions:"]}]
+61:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{Tr}^X_{A,B} : \\text{Hom}(A \\otimes X, ; B \\otimes X) \\to \\text{Hom}(A, B)$$"}]
+62:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["for every triple of objects $A, B, X$, satisfying naturality and coherence axioms\n(see ",["$","a",null,{"href":"https://ncatlab.org/nlab/show/traced+monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: traced monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],")."]}]
+63:["$","h3",null,{"id":"remark-32","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 3.2",["$","$L26",null,{"id":"remark-32"}]]}]
+64:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Intuitively, $\\text{Tr}^X_{A,B}$ takes a morphism that has an “extra” input and output\nof type $X$ and produces a morphism where $X$ is wired internally as a feedback loop.\nThe external interface shrinks from $(A \\otimes X) \\to (B \\otimes X)$ to just $A \\to B$."}]
+65:["$","h3",null,{"id":"example-33-feedback-in-comp","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Example 3.3 (Feedback in Comp)",["$","$L26",null,{"id":"example-33-feedback-in-comp"}]]}]
+66:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Recall from Remark 2.9 the $\\text{AgentState} : \\text{Text} \\to \\text{History}$ and\n$\\text{LLM} : \\text{History} \\to \\text{Text}$ components. Their composition\n$\\text{LLM} \\circ \\text{AgentState} : \\text{Text} \\to \\text{Text}$ is a morphism\nwith matching input and output types. We can model this as a morphism with an extra\nfeedback channel:"}]
+67:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$P : \\text{Text} \\otimes \\text{Text} \\to \\text{Text} \\otimes \\text{Text}$$"}]
+68:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Applying trace over $\\text{Text}$:"}]
+69:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\text{Tr}^{\\text{Text}}(P) : \\text{Text} \\to \\text{Text}$$"}]
+6a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The feedback channel becomes internal — the LLM’s text output feeds back into\nAgentState, whose history output feeds the next LLM call. From the outside, it is\nsimply a $\\text{Text} \\to \\text{Text}$ component."}]
+6b:["$","h3",null,{"id":"remark-34-relation-to-haskells-arrowloop","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 3.4 (Relation to Haskell’s ArrowLoop)",["$","$L26",null,{"id":"remark-34-relation-to-haskells-arrowloop"}]]}]
+6c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ArrowLoop"}]," type class adds feedback to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Arrow"}],":"]}]
+6d:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$Lcf",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":" Arrow"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" a "}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"=>"}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":" ArrowLoop"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" a "}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"where"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"    loop"}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":" ::"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" a (b, d) (c, d) "}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"->"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" a b c"}]]}]]}]]}]]}]
+6e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["This is exactly the trace operator: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"loop"}]," takes a morphism of type $(B \\otimes D) \\to (C \\otimes D)$\nand produces one of type $B \\to C$ by feeding $D$ back. The ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"rec"}]," keyword in arrow notation\nis syntactic sugar for ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"loop"}],"."]}]
+6f:["$","h3",null,{"id":"remark-35-limitation","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 3.5 (Limitation)",["$","$L26",null,{"id":"remark-35-limitation"}]]}]
+70:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Consider an $\\text{ASR} : \\text{Audio} \\to \\text{Text}$ whose text output should feed\nboth an $\\text{LLM}$ and a $\\text{Logger}$ simultaneously. Or two independent\n$\\text{ASR}$ components whose text outputs should merge into a single $\\text{LLM}$\ninput. A traced commutative monoidal category has no operation for either — every\noutput goes to exactly ",["$","strong",null,{"children":"one"}]," input. We need:"]}]
+71:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Fan-out (copying):"}]," one output feeds multiple downstream components."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Fan-in (merging):"}]," multiple outputs feed into one input."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Discard:"}]," an output that goes nowhere."]}],"\n"]}]
+72:["$","h2",null,{"id":"4-copy-merge-and-discard","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["4. Copy, merge, and discard",["$","$L26",null,{"id":"4-copy-merge-and-discard"}]]}]
+73:["$","h3",null,{"id":"definition-41-commutative-comonoid","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 4.1 (Commutative comonoid)",["$","$L26",null,{"id":"definition-41-commutative-comonoid"}]]}]
+74:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Let $(\\mathbf{C}, \\otimes, I)$ be a monoidal category. A ",["$","strong",null,{"children":"commutative comonoid"}]," on\nan object $A$ is a pair of morphisms:"]}]
+75:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\Delta_A : A \\to A \\otimes A \\quad \\text{(copy)}$$\n$$\\varepsilon_A : A \\to I \\quad \\text{(discard)}$$"}]
+76:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["satisfying coassociativity, counitality, and commutativity (see\n",["$","a",null,{"href":"https://ncatlab.org/nlab/show/comonoid","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: comonoid",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],")."]}]
+77:["$","h3",null,{"id":"definition-42-commutative-monoid","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 4.2 (Commutative monoid)",["$","$L26",null,{"id":"definition-42-commutative-monoid"}]]}]
+78:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Dually, a ",["$","strong",null,{"children":"commutative monoid"}]," on an object $A$ is a pair of morphisms:"]}]
+79:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\nabla_A : A \\otimes A \\to A \\quad \\text{(merge)}$$\n$$\\eta_A : I \\to A \\quad \\text{(create)}$$"}]
+7a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["satisfying associativity, unitality, and commutativity (see\n",["$","a",null,{"href":"https://ncatlab.org/nlab/show/monoid+in+a+monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: monoid",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],")."]}]
+7b:["$","h3",null,{"id":"definition-43-gs-monoidal-category","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 4.3 (gs-monoidal category)",["$","$L26",null,{"id":"definition-43-gs-monoidal-category"}]]}]
+7c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"gs-monoidal category"}]," (garbage-sharing monoidal category) is a symmetric monoidal\ncategory in which every object is equipped with a commutative comonoid structure\n$(\\Delta_A, \\varepsilon_A)$ that is natural in $A$."]}]
+7d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"“Garbage” refers to discard ($\\varepsilon$), and “sharing” refers to copy ($\\Delta$)."}]
+7e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"See [Corradini & Gadducci, 1999] for the original definition."}]
+7f:["$","h3",null,{"id":"definition-44-gs-monoidal-category-with-merges","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 4.4 (gs-monoidal category with merges)",["$","$L26",null,{"id":"definition-44-gs-monoidal-category-with-merges"}]]}]
+80:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["We extend the gs-monoidal structure by additionally equipping every object with a natural\ncommutative monoid structure $(\\nabla_A, \\eta_A)$. This gives every object the structure\nof a ",["$","strong",null,{"children":"commutative bimonoid"}],": both a commutative monoid and a commutative comonoid."]}]
+81:["$","h3",null,{"id":"example-45-fan-out-fan-in-and-discard-in-comp","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Example 4.5 (Fan-out, fan-in, and discard in Comp)",["$","$L26",null,{"id":"example-45-fan-out-fan-in-and-discard-in-comp"}]]}]
+82:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"In OpenNeuro, these operations are provided by the channel system:"}]
+83:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Copy ($\\Delta$)."}]," A ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Sender"}]," holds a list of ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Channel"}],"s. When it sends a frame,\nevery channel receives a copy. This is fan-out: one output going to multiple\ndownstream components."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Discard ($\\varepsilon$)."}]," A ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Sender"}]," with no connected channels. The frame is\nproduced but nobody reads it. The data is silently discarded."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Merge ($\\nabla$)."}]," Multiple ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Sender"}],"s connected to the same ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Channel"}],". Frames\nfrom different upstream components are interleaved by arrival order into a single\nstream."]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Create ($\\eta$)."}]," A source component (e.g. ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Microphone"}],") that produces frames\nfrom nothing — it has no input channels, only outputs."]}],"\n"]}],"\n"]}]
+84:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"These operations are inherent to the channel design, not bolted on. Any component’s\noutput can fan out to arbitrarily many downstream components, and any input can receive\nfrom arbitrarily many upstream components, without any special wiring logic."}]
+85:["$","h2",null,{"id":"5-the-type-lattice","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["5. The type lattice",["$","$L26",null,{"id":"5-the-type-lattice"}]]}]
+86:["$","h3",null,{"id":"definition-51-partial-order-on-objects","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 5.1 (Partial order on objects)",["$","$L26",null,{"id":"definition-51-partial-order-on-objects"}]]}]
+87:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The objects of ",["$","strong",null,{"children":"Comp"}]," carry a ",["$","strong",null,{"children":"partial order"}]," $\\leq$ given by the subtyping\nrelation on frame types. We write $A \\leq B$ when $A$ is a subtype of $B$."]}]
+88:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"In OpenNeuro, this is the class hierarchy:"}]
+89:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$Lcf",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"            Frame"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"          / |  |  \\"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"   Audio  Text  Video  BodyPose  ..."}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"           |"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"          EOS"}]}]]}]]}]]}]
+8a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"So $\\text{EOS} \\leq \\text{Text} \\leq \\text{Frame}$, but $\\text{Audio}$ and\n$\\text{Video}$ are incomparable."}]
+8b:["$","h3",null,{"id":"remark-52-wiring-compatibility","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 5.2 (Wiring compatibility)",["$","$L26",null,{"id":"remark-52-wiring-compatibility"}]]}]
+8c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"A connection from a $\\text{Sender}[A]$ to a $\\text{Receiver}[B]$ is valid when\n$A \\leq B$. This means a component that outputs $\\text{EOS}$ frames can wire into\nany input that accepts $\\text{Text}$, because $\\text{EOS} \\leq \\text{Text}$."}]
+8d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The partial order gives rise to implicit coercion morphisms $\\iota_{A,B} : A \\to B$\nfor every $A \\leq B$. These are the “silent” type conversions that the system handles\nwithout the user writing an explicit adapter component."}]
+8e:["$","h3",null,{"id":"remark-53","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 5.3",["$","$L26",null,{"id":"remark-53"}]]}]
+8f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["In categorical terms, the partial order makes the collection of objects a\n",["$","a",null,{"href":"https://ncatlab.org/nlab/show/partial+order","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["poset",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],", and the coercion morphisms\nare the unique morphisms guaranteed by the partial order. This enriches our category\nwith a subtyping discipline: composition respects the order, and the monoidal product\nextends it componentwise."]}]
+90:["$","h2",null,{"id":"6-higher-order-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["6. Higher-order components",["$","$L26",null,{"id":"6-higher-order-components"}]]}]
+91:["$","h3",null,{"id":"definition-61-functor","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 6.1 (Functor)",["$","$L26",null,{"id":"definition-61-functor"}]]}]
+92:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A ",["$","strong",null,{"children":"functor"}]," $F : \\mathbf{C} \\to \\mathbf{D}$ between two categories consists of:"]}]
+93:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"A mapping on objects: $A \\mapsto F(A)$."}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"A mapping on morphisms: $(f : A \\to B) \\mapsto (F(f) : F(A) \\to F(B))$."}],"\n"]}]
+94:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"preserving identity and composition:"}]
+95:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["$$$F(\\text{id}",["$","em",null,{"children":"A) = \\text{id}"}],"{F(A)}$$\n$$F(g \\circ f) = F(g) \\circ F(f)$$"]}]
+96:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["An ",["$","strong",null,{"children":"endofunctor"}]," is a functor from a category to itself: $F : \\mathbf{C} \\to \\mathbf{C}$."]}]
+97:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["See ",["$","a",null,{"href":"https://ncatlab.org/nlab/show/functor","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: functor",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}],"."]}]
+98:["$","h3",null,{"id":"example-62-generic-components-as-endofunctors","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Example 6.2 (Generic components as endofunctors)",["$","$L26",null,{"id":"example-62-generic-components-as-endofunctors"}]]}]
+99:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A component that is ",["$","strong",null,{"children":"generic over its frame type"}]," defines an endofunctor on ",["$","strong",null,{"children":"Comp"}],".\nFor instance, a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Passthrough[T]"}]," component — parameterized by a type $T$ — maps:"]}]
+9a:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Each object $T$ to itself."}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Each morphism $f : A \\to B$ to a morphism $\\text{Passthrough}(f) : A \\to B$ that applies\n$f$ while passing data through."}],"\n"]}]
+9b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["More practical examples of endofunctors on ",["$","strong",null,{"children":"Comp"}]," include:"]}]
+9c:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["A ",["$","strong",null,{"children":"profiler"}]," that wraps any component and adds timing measurements, without changing\nits interface type."]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["A ",["$","strong",null,{"children":"retry wrapper"}]," that takes any component $f : A \\to B$ and produces a fault-tolerant\nversion $\\text{Retry}(f) : A \\to B$."]}],"\n"]}]
+9d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"These are structure-preserving: wrapping a composition is the same as composing the\nwrapped versions. That is precisely the functor law $F(g \\circ f) = F(g) \\circ F(f)$."}]
+9e:["$","h2",null,{"id":"7-putting-it-together","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["7. Putting it together",["$","$L26",null,{"id":"7-putting-it-together"}]]}]
+9f:["$","h3",null,{"id":"remark-71","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 7.1",["$","$L26",null,{"id":"remark-71"}]]}]
+a0:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Extending the free category of Definition 1.4 with all the structure introduced in\n§2–§4, OpenNeuro’s graph language generates a ",["$","strong",null,{"children":"free traced commutative gs-monoidal\ncategory with merges"}]," — the free category built from the declared components as\nprimitive morphisms, closed under sequential composition ($\\circ$), parallel composition\n($\\otimes$), trace ($\\text{Tr}$), copy ($\\Delta$), merge ($\\nabla$), and discard\n($\\varepsilon$), with no additional equations."]}]
+a1:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Every morphism in this free category corresponds to a graph that can be constructed in\nthe system. Every constructible graph corresponds to a morphism. The free category is\nexactly the space of all programs expressible in the system."}]
+a2:["$","h3",null,{"id":"definition-72-interpretation","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 7.2 (Interpretation)",["$","$L26",null,{"id":"definition-72-interpretation"}]]}]
+a3:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["An ",["$","strong",null,{"children":"interpretation"}]," of the free category is a structure-preserving functor:"]}]
+a4:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\llbracket - \\rrbracket : F(\\text{Generators}) \\to \\mathbf{Sem}$$"}]
+a5:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["from the free category into a ",["$","strong",null,{"children":"semantic category"}]," $\\mathbf{Sem}$ where morphisms have\ncomputational meaning (e.g., actual running threads passing real frames through channels)."]}]
+a6:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The interpretation functor must preserve all structure:"}]
+a7:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"$$\\llbracket g \\circ f \\rrbracket = \\llbracket g \\rrbracket \\circ \\llbracket f \\rrbracket$"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"$$\\llbracket f \\otimes g \\rrbracket = \\llbracket f \\rrbracket \\otimes \\llbracket g \\rrbracket$"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"$$\\llbracket \\text{Tr}^X(f) \\rrbracket = \\text{Tr}^{\\llbracket X \\rrbracket}(\\llbracket f \\rrbracket)$"}],"\n"]}]
+a8:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Because the source is free, the interpretation is ",["$","strong",null,{"children":"uniquely determined"}]," by its action\non the generators. Once you assign a concrete implementation to each primitive component,\nthe semantics of every composite graph is fixed automatically by functoriality."]}]
+a9:["$","h3",null,{"id":"remark-73-abstract-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 7.3 (Abstract components)",["$","$L26",null,{"id":"remark-73-abstract-components"}]]}]
+aa:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A generator in the free category that has not been assigned an interpretation is an\n",["$","strong",null,{"children":"abstract component"}]," — declared with a typed interface but no implementation. A graph\ncontaining abstract components cannot be fully interpreted (executed) until every\nabstract generator is given a concrete meaning."]}]
+ab:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"This is the categorical account of “plug-in” or “placeholder” components: the graph\nstructure is well-defined regardless of whether implementations exist, but execution\nrequires a complete interpretation."}]
+ac:["$","h2",null,{"id":"8-subgraphs-and-named-composition","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["8. Subgraphs and named composition",["$","$L26",null,{"id":"8-subgraphs-and-named-composition"}]]}]
+ad:["$","h3",null,{"id":"definition-81-graph-expression-language","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 8.1 (Graph expression language)",["$","$L26",null,{"id":"definition-81-graph-expression-language"}]]}]
+ae:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["We define an ",["$","strong",null,{"children":"expression language"}]," for morphisms in the free category. An expression\n$e$ has the following grammar:"]}]
+af:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$e ;;::=;; \\text{prim}(c) ;\\mid; e_1 \\circ e_2 ;\\mid; e_1 \\otimes e_2 ;\\mid; \\text{name}(x)$$"}]
+b0:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["where $c$ ranges over primitive components (generators), and $x$ ranges over names\ndrawn from an ",["$","strong",null,{"children":"environment"}]," $\\Gamma : \\text{Name} \\to \\text{Value}$, where values are\nmorphisms in the free category."]}]
+b1:["$","h3",null,{"id":"definition-82-operational-semantics","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 8.2 (Operational semantics)",["$","$L26",null,{"id":"definition-82-operational-semantics"}]]}]
+b2:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","strong",null,{"children":"evaluation judgment"}]," $\\Gamma \\vdash e \\Downarrow v$ maps an expression $e$ under\nenvironment $\\Gamma$ to a morphism $v$ in $F(G)$:"]}]
+b3:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\frac{}{\\Gamma \\vdash \\text{prim}(c) \\Downarrow c}$$"}]
+b4:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\frac{\\Gamma \\vdash e_1 \\Downarrow f \\quad \\Gamma \\vdash e_2 \\Downarrow g}{\\Gamma \\vdash e_1 \\circ e_2 \\Downarrow f \\circ g}$$"}]
+b5:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\frac{\\Gamma \\vdash e_1 \\Downarrow f \\quad \\Gamma \\vdash e_2 \\Downarrow g}{\\Gamma \\vdash e_1 \\otimes e_2 \\Downarrow f \\otimes g}$$"}]
+b6:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\frac{\\Gamma(x) = v}{\\Gamma \\vdash \\text{name}(x) \\Downarrow v}$$"}]
+b7:["$","h3",null,{"id":"remark-83-grouping-as-environment-extension","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 8.3 (Grouping as environment extension)",["$","$L26",null,{"id":"remark-83-grouping-as-environment-extension"}]]}]
+b8:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["When a user selects a subgraph and groups it under a name $x$, this corresponds to\n",["$","strong",null,{"children":"extending the environment"}],":"]}]
+b9:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\Gamma’ = \\Gamma[x \\mapsto v]$$"}]
+ba:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"where $v$ is the morphism obtained by evaluating the selected subexpression. For example,\ngiven a graph with $\\text{ASR} : \\text{Audio} \\to \\text{Text}$ and\n$\\text{LLM} : \\text{Text} \\to \\text{Text}$, the expression is:"}]
+bb:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$e = \\text{LLM} \\circ \\text{ASR}$$"}]
+bc:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Grouping under the name “understanding” produces:"}]
+bd:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\Gamma’ = \\Gamma[\\text{understanding} \\mapsto \\text{LLM} \\circ \\text{ASR}]$$"}]
+be:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The graph can now be written as $\\text{name}(\\text{understanding})$, which evaluates to\nthe same morphism. The grouping operation does not change the denoted morphism — it\nintroduces a ",["$","strong",null,{"children":"name"}]," for a composite, making it referenceable."]}]
+bf:["$","h3",null,{"id":"remark-84-ungrouping","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 8.4 (Ungrouping)",["$","$L26",null,{"id":"remark-84-ungrouping"}]]}]
+c0:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Ungrouping is the inverse: given $\\Gamma’ = \\Gamma[x \\mapsto v]$, ungrouping $x$\nremoves the binding and inlines $v$ back into the expression, recovering the original\nenvironment $\\Gamma$."}]
+c1:["$","h3",null,{"id":"definition-85-open-and-closed-expressions","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Definition 8.5 (Open and closed expressions)",["$","$L26",null,{"id":"definition-85-open-and-closed-expressions"}]]}]
+c2:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["An expression $e$ is ",["$","strong",null,{"children":"closed"}]," under environment $\\Gamma$ when every $\\text{name}(x)$\noccurring in $e$ satisfies $x \\in \\text{dom}(\\Gamma)$. A closed expression can be fully\nevaluated by the rules of Definition 8.2."]}]
+c3:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["An expression is ",["$","strong",null,{"children":"open"}]," when it contains free names — $\\text{name}(x)$ where\n$x \\notin \\text{dom}(\\Gamma)$. Evaluation gets stuck at any free name since no rule\napplies."]}]
+c4:["$","h3",null,{"id":"remark-86-abstract-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Remark 8.6 (Abstract components)",["$","$L26",null,{"id":"remark-86-abstract-components"}]]}]
+c5:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["An open expression contains ",["$","strong",null,{"children":"abstract components"}],": it has a well-defined typed interface\n(its input and output types can be inferred from the structure), but it cannot be\nexecuted because some subexpressions are unresolved."]}]
+c6:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["To execute an abstract graph, the user must supply a ",["$","strong",null,{"children":"substitution"}],"\n$\\sigma : \\text{FreeNames}(e) \\to \\text{Value}$ mapping each free name to a concrete\nmorphism of matching type. Applying the substitution closes the expression:"]}]
+c7:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\Gamma’ = \\Gamma \\cup \\sigma$$"}]
+c8:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"$$$\\Gamma’ \\vdash e \\Downarrow v$$"}]
+c9:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"This is the expression-language account of the abstract components described in\nRemark 7.3: an unbound name plays the same role as a generator without an\ninterpretation — a typed placeholder that must be filled in before the graph can run."}]
+ca:["$","h2",null,{"id":"summary","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Summary",["$","$L26",null,{"id":"summary"}]]}]
+cb:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The following table summarizes the correspondence between OpenNeuro concepts and their\ncategorical counterparts."}]
+cc:["$","table",null,{"className":"x:block x:overflow-x-auto nextra-scrollbar x:not-first:mt-[1.25em] x:p-0","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"OpenNeuro","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Category theory","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Introduced in","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["Frame types (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Audio"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Text"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Video"}],", …)"],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Objects","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§1","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["Components (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Component[I, O]"}],")"],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Morphisms","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§1","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":"Wiring output to input","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Sequential composition ($\\circ$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§1","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":"All constructible graphs","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Free category","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§1","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":"Running side by side","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Parallel composition ($\\otimes$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§2","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":"Named ports (order doesn’t matter)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],"$Ld0","$Ld1"],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],"$Ld2","$Ld3","$Ld4","$Ld5","$Ld6","$Ld7","$Ld8","$Ld9","$Lda","$Ldb","$Ldc","$Ldd","$Lde"]}]]}]
+cd:["$","h2",null,{"id":"references","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["References",["$","$L26",null,{"id":"references"}]]}]
+ce:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/symmetric+monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: symmetric monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/traced+monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: traced monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/comonoid","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: comonoid",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/monoid+in+a+monoidal+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: monoid in a monoidal category",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/free+category","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: free category","$Ldf"]}]}],"\n","$Le0","\n","$Le1","\n","$Le2","\n"]}]
+d0:["$","td",null,{"children":"Commutativity of $\\otimes$","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]
+d1:["$","td",null,{"children":"§2","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]
+d2:["$","tr",null,{"children":[["$","td",null,{"children":"Output wired back to input","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Trace ($\\text{Tr}^X$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§3","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d3:["$","tr",null,{"children":[["$","td",null,{"children":"Fan-out (one output, many inputs)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Copy ($\\Delta$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§4","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d4:["$","tr",null,{"children":[["$","td",null,{"children":"Unused output","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Discard ($\\varepsilon$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§4","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d5:["$","tr",null,{"children":[["$","td",null,{"children":"Fan-in (many outputs, one input)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Merge ($\\nabla$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§4","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d6:["$","tr",null,{"children":[["$","td",null,{"children":"Source component (no inputs)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Create ($\\eta$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§4","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d7:["$","tr",null,{"children":[["$","td",null,{"children":["Frame subtyping (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"EOS ≤ Text"}],")"],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Partial order on objects","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§5","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d8:["$","tr",null,{"children":[["$","td",null,{"children":"Generic / higher-order component","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Endofunctor","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§6","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+d9:["$","tr",null,{"children":[["$","td",null,{"children":"Runtime execution","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Interpretation functor ($\\llbracket - \\rrbracket$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§7","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+da:["$","tr",null,{"children":[["$","td",null,{"children":"Subgraph (named composite)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Named expression / environment binding","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§8","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+db:["$","tr",null,{"children":[["$","td",null,{"children":"Group operation","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Environment extension ($\\Gamma’ = \\Gamma[x \\mapsto v]$)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§8","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+dc:["$","tr",null,{"children":[["$","td",null,{"children":"Ungroup operation","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Environment removal / inlining","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§8","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+dd:["$","tr",null,{"children":[["$","td",null,{"children":"Abstract component (placeholder)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Open expression (free name)","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§8","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+de:["$","tr",null,{"children":[["$","td",null,{"children":"Supplying implementations","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Substitution closing the expression","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"§8","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]
+df:[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]
+e0:["$","li",null,{"className":"x:my-[.5em]","children":["$","a",null,{"href":"https://ncatlab.org/nlab/show/functor","target":"_blank","rel":"noreferrer","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":["nLab: functor",[" ",["$","svg",null,{"fill":"none","stroke":"currentColor","strokeLinecap":"round","strokeLinejoin":"round","strokeWidth":1.7,"viewBox":"0 0 24 24","height":"1em","className":"x:inline x:align-baseline x:shrink-0","children":[["$","path",null,{"d":"M7 17L17 7"}],["$","path",null,{"d":"M7 7h10v10"}]]}]]]}]}]
+e1:["$","li",null,{"className":"x:my-[.5em]","children":"Corradini, A. & Gadducci, F. (1999). “An algebraic presentation of term graphs, via gs-monoidal categories.”"}]
+e2:["$","li",null,{"className":"x:my-[.5em]","children":"Hasegawa, M. (1997). “Recursion from cyclic sharing: traced monoidal categories and models of cyclic lambda calculi.”"}]
+a:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+c:[["$","title","0",{"children":"OpenNeuro Docs"}],["$","meta","1",{"name":"description","content":"Documentation for the OpenNeuro real-time audio pipeline framework"}]]
