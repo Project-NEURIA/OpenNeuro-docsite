@@ -1,3 +1,5 @@
-.katex-display {
+/* Center display math: $$ blocks render as <p><span class="katex">...</span></p> */
+p > .katex:only-child {
+  display: block;
   text-align: center;
 }
