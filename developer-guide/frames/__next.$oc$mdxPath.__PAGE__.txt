@@ -1,0 +1,168 @@
+1:"$Sreact.fragment"
+2:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+3:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+4:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+9:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+a:I[83987,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ToggleWordWrapButton"]
+38:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+39:"$Sreact.suspense"
+3b:I[22016,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],""]
+5:Te89,# Frame Types
+
+All data flowing through channels is a Frame. Frames are frozen dataclasses with nanosecond timestamps.
+
+## Base
+
+```python
+@dataclass(frozen=True, slots=True)
+class Frame:
+    pts: int   # time.time_ns() — creation timestamp
+    id: int    # unique ID from obj_id()
+```
+
+## Audio
+
+**AudioFrame** — Multi-channel audio:
+- `data: np.ndarray` — shape `(channels, samples)`, float32 normalized to [-1, 1]
+- `sample_rate: int`
+- `channels: int`
+- Formats: `FLOAT32`, `PCM16`, `PCM8`
+
+`.get(format, sample_rate, num_channels)` performs three steps in sequence:
+1. **Resample** — linear interpolation via `np.interp()` if target rate differs
+2. **Channel conversion** — mono↔stereo (average/duplicate), expand with silence, or truncate
+3. **Format conversion** — float32 array, interleaved PCM16 bytes, or PCM8 bytes
+
+## Text
+
+**TextFrame** — `text: str`, `language: str | None`
+
+**EOS** — End-of-sequence sentinel. Subclasses TextFrame. `EOS.END` is the singleton instance.
+
+## Interrupts
+
+**InterruptFrame** — `reason: str`. Signals components to abort current processing.
+
+**RequestFrame** — Trigger frame (no payload). Used to wake up components like AgentState.
+
+## Chat Messages
+
+**MessageFrame** — OpenAI-compatible chat message:
+- `role: Literal["system", "user", "assistant", "tool"]`
+- `content: str | None`
+- `tool_calls: list[ChatCompletionMessageToolCall] | None` — for assistant messages that invoke tools
+- `tool_call_id: str | None` — for tool result messages
+
+## Tools
+
+**ToolDef** — Tool definition (matches OpenAI FunctionDefinition):
+- `name: str`, `description: str`, `parameters: dict[str, Any]`, `strict: bool | None`
+
+**ToolCall** — LLM invoked a tool:
+- `call_id: str`, `name: str`, `arguments: str` (JSON string)
+
+**ToolResult** — Tool execution result:
+- `call_id: str`, `content: str`
+
+## Motion
+
+**BodyPoseFrame** — Full-body skeletal tracking:
+- `_poses: dict[str, BonePose | None]` — 13 body parts
+- `.get()` returns the poses dict
+- Any body part can be `None` (partial update — "don't change this bone")
+- Coordinate system: Y-up (see [Coordinate System](./coordinate-system))
+
+**BonePose** (NamedTuple):
+```
+pos_x: float = 0.0    # X position (figure's right)
+pos_y: float = 0.0    # Y position (up)
+pos_z: float = 0.0    # Z position (backward)
+rot_w: float = 1.0    # quaternion scalar (identity)
+rot_x: float = 0.0
+rot_y: float = 0.0
+rot_z: float = 0.0
+```
+
+Quaternion order is (w, x, y, z) — scalar first. `BonePose()` creates identity at origin.
+
+**13 body parts** (matching OpenVR full-body tracking):
+head, left_hand, right_hand, waist, chest, left_foot, right_foot, left_knee, right_knee, left_elbow, right_elbow, left_shoulder, right_shoulder
+
+**GoalFrame** — Navigation target:
+- `x, y, z: float | None` — 3D position (Y-up)
+- `heading: float | None` — target facing direction (degrees from +Z clockwise)
+
+## Video
+
+**VideoFrame** — `data: np.ndarray`, `width`, `height`, `format: BGR | RGB`
+- `.get(format)` — convert between BGR/RGB
+
+**StereoVideoFrame** — `left: np.ndarray`, `right: np.ndarray` (stereo pair)
+
+## Vision
+
+**ObjectDetectionFrame** — `boxes: [N, M, 4]`, `scores: [N, M]`, `prompts: tuple[str, ...]`
+
+**ObjectSegmentationFrame** — `masks: [K, H, W] bool`, `boxes`, `scores`, `object_ids`, `labels`
+
+**ObjectLocationFrame** — 3D world positions:
+- `labels: tuple[str, ...]`, `positions: [K, 3]`, `depths: [K,]`, `scores`, `boxes`, `object_ids`
+
+## Depth
+
+**DepthFrame** — `data: [H, W] float32`, `is_metric: bool`
+
+## Camera
+
+**CameraParamsFrame** — `intrinsics: [3, 3]`, `extrinsics: [4, 4]`, `width`, `height`
+
+**StereoCameraParamsFrame** — adds `baseline: float` to CameraParamsFrame0:{"buildId":"foE4UiXiIaiax_BvQZ75A","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Base","id":"base","depth":2},{"value":"Audio","id":"audio","depth":2},{"value":"Text","id":"text","depth":2},{"value":"Interrupts","id":"interrupts","depth":2},{"value":"Chat Messages","id":"chat-messages","depth":2},{"value":"Tools","id":"tools","depth":2},{"value":"Motion","id":"motion","depth":2},{"value":"Video","id":"video","depth":2},{"value":"Vision","id":"vision","depth":2},{"value":"Depth","id":"depth","depth":2},{"value":"Camera","id":"camera","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Frame Types","filePath":"content/developer-guide/frames.mdx"},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"loading":null,"isPartial":false}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Frame Types","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"All data flowing through channels is a Frame. Frames are frozen dataclasses with nanosecond timestamps."}],"\n",["$","h2",null,{"id":"base","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Base",["$","$L9",null,{"id":"base"}]]}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"@dataclass"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"("}],["$","span",null,{"style":{"--shiki-light":"#E36209","--shiki-dark":"#FFAB70"},"children":"frozen"}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"="}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"True"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":", "}],["$","span",null,{"style":{"--shiki-light":"#E36209","--shiki-dark":"#FFAB70"},"children":"slots"}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"="}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"True"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":")"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":" Frame"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":":"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    pts: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"int"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"   # time.time_ns() — creation timestamp"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"    id"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":": "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"int"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"    # unique ID from obj_id()"}]]}]]}]]}]]}],"\n",["$","h2",null,{"id":"audio","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Audio",["$","$L9",null,{"id":"audio"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"AudioFrame"}]," — Multi-channel audio:"]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n"]}],"\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e","\n","$L2f","\n","$L30","\n","$L31","\n","$L32","\n","$L33","\n","$L34","\n","$L35","\n","$L36","\n","$L37"]}]
+8:["$","$L38",null,{"children":["$","$39",null,{"name":"Next.MetadataOutlet","children":"$@3a"}]}]
+b:["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"data: np.ndarray"}]," — shape ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"(channels, samples)"}],", float32 normalized to [-1, 1]"]}]
+c:["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sample_rate: int"}]}]
+d:["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"channels: int"}]}]
+e:["$","li",null,{"className":"x:my-[.5em]","children":["Formats: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"FLOAT32"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"PCM16"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"PCM8"}]]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":".get(format, sample_rate, num_channels)"}]," performs three steps in sequence:"]}]
+10:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Resample"}]," — linear interpolation via ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"np.interp()"}]," if target rate differs"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Channel conversion"}]," — mono↔stereo (average/duplicate), expand with silence, or truncate"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Format conversion"}]," — float32 array, interleaved PCM16 bytes, or PCM8 bytes"]}],"\n"]}]
+11:["$","h2",null,{"id":"text","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Text",["$","$L9",null,{"id":"text"}]]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"TextFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"text: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"language: str | None"}]]}]
+13:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"EOS"}]," — End-of-sequence sentinel. Subclasses TextFrame. ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"EOS.END"}]," is the singleton instance."]}]
+14:["$","h2",null,{"id":"interrupts","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Interrupts",["$","$L9",null,{"id":"interrupts"}]]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"InterruptFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"reason: str"}],". Signals components to abort current processing."]}]
+16:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"RequestFrame"}]," — Trigger frame (no payload). Used to wake up components like AgentState."]}]
+17:["$","h2",null,{"id":"chat-messages","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Chat Messages",["$","$L9",null,{"id":"chat-messages"}]]}]
+18:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"MessageFrame"}]," — OpenAI-compatible chat message:"]}]
+19:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"role: Literal[\"system\", \"user\", \"assistant\", \"tool\"]"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"content: str | None"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"tool_calls: list[ChatCompletionMessageToolCall] | None"}]," — for assistant messages that invoke tools"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"tool_call_id: str | None"}]," — for tool result messages"]}],"\n"]}]
+1a:["$","h2",null,{"id":"tools","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Tools",["$","$L9",null,{"id":"tools"}]]}]
+1b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ToolDef"}]," — Tool definition (matches OpenAI FunctionDefinition):"]}]
+1c:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"name: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"description: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"parameters: dict[str, Any]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"strict: bool | None"}]]}],"\n"]}]
+1d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ToolCall"}]," — LLM invoked a tool:"]}]
+1e:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"call_id: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"name: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"arguments: str"}]," (JSON string)"]}],"\n"]}]
+1f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ToolResult"}]," — Tool execution result:"]}]
+20:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"call_id: str"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"content: str"}]]}],"\n"]}]
+21:["$","h2",null,{"id":"motion","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Motion",["$","$L9",null,{"id":"motion"}]]}]
+22:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"BodyPoseFrame"}]," — Full-body skeletal tracking:"]}]
+23:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_poses: dict[str, BonePose | None]"}]," — 13 body parts"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":".get()"}]," returns the poses dict"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Any body part can be ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"None"}]," (partial update — “don’t change this bone”)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Coordinate system: Y-up (see ",["$","$L3b",null,{"href":"./coordinate-system","className":"x:focus-visible:nextra-focus x:text-primary-600 x:underline x:hover:no-underline x:decoration-from-font x:[text-underline-position:from-font]","children":"Coordinate System"}],")"]}],"\n"]}]
+24:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"BonePose"}]," (NamedTuple):"]}]
+25:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"pos_x: float = 0.0    # X position (figure's right)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"pos_y: float = 0.0    # Y position (up)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"pos_z: float = 0.0    # Z position (backward)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"rot_w: float = 1.0    # quaternion scalar (identity)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"rot_x: float = 0.0"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"rot_y: float = 0.0"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"rot_z: float = 0.0"}]}]]}]]}]]}]
+26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Quaternion order is (w, x, y, z) — scalar first. ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"BonePose()"}]," creates identity at origin."]}]
+27:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"13 body parts"}]," (matching OpenVR full-body tracking):\nhead, left_hand, right_hand, waist, chest, left_foot, right_foot, left_knee, right_knee, left_elbow, right_elbow, left_shoulder, right_shoulder"]}]
+28:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GoalFrame"}]," — Navigation target:"]}]
+29:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"x, y, z: float | None"}]," — 3D position (Y-up)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"heading: float | None"}]," — target facing direction (degrees from +Z clockwise)"]}],"\n"]}]
+2a:["$","h2",null,{"id":"video","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Video",["$","$L9",null,{"id":"video"}]]}]
+2b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"VideoFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"data: np.ndarray"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"width"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"height"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"format: BGR | RGB"}]]}]
+2c:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":".get(format)"}]," — convert between BGR/RGB"]}],"\n"]}]
+2d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"StereoVideoFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"left: np.ndarray"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"right: np.ndarray"}]," (stereo pair)"]}]
+2e:["$","h2",null,{"id":"vision","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Vision",["$","$L9",null,{"id":"vision"}]]}]
+2f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ObjectDetectionFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"boxes: [N, M, 4]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"scores: [N, M]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"prompts: tuple[str, ...]"}]]}]
+30:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ObjectSegmentationFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"masks: [K, H, W] bool"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"boxes"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"scores"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"object_ids"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"labels"}]]}]
+31:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"ObjectLocationFrame"}]," — 3D world positions:"]}]
+32:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"labels: tuple[str, ...]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"positions: [K, 3]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"depths: [K,]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"scores"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"boxes"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"object_ids"}]]}],"\n"]}]
+33:["$","h2",null,{"id":"depth","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Depth",["$","$L9",null,{"id":"depth"}]]}]
+34:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"DepthFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"data: [H, W] float32"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"is_metric: bool"}]]}]
+35:["$","h2",null,{"id":"camera","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Camera",["$","$L9",null,{"id":"camera"}]]}]
+36:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"CameraParamsFrame"}]," — ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"intrinsics: [3, 3]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"extrinsics: [4, 4]"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"width"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"height"}]]}]
+37:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"StereoCameraParamsFrame"}]," — adds ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"baseline: float"}]," to CameraParamsFrame"]}]
+3a:null

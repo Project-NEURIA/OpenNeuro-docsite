@@ -1,0 +1,195 @@
+1:"$Sreact.fragment"
+2:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+3:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+4:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+9:I[83987,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ToggleWordWrapButton"]
+a:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+2f:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+30:"$Sreact.suspense"
+5:T149a,# System Overview
+
+OpenNeuro has three subsystems:
+
+```
+OpenNeuro/
+├── backend/          Python FastAPI server + pipeline engine
+│   └── src/
+│       ├── core/     Component hierarchy, channels, graphs, frames
+│       ├── api/      REST/WS endpoints
+│       └── main.py   App entry point
+├── frontend/         React graph editor
+│   └── src/
+│       ├── components/
+│       ├── hooks/
+│       ├── lib/
+│       └── App.tsx
+├── src-tauri/        Rust desktop shell
+│   └── src/lib.rs
+└── docs/             Nextra docsite
+```
+
+## Communication
+
+```
+Frontend ──REST──► Backend (graph CRUD, component registry, project management)
+Frontend ◄──SSE──  Backend (live metrics every 100ms)
+Frontend ◄──WS───► Backend (UI channels: video overlays, text input/output)
+```
+
+- **REST** — Graph operations, component listing, project load/save, environment config
+- **SSE** (`/metrics`) — Per-node status, per-slot throughput/lag deltas
+- **WebSocket** (`/ui/ws`) — Bidirectional UI channels: components push video/text to frontend, frontend pushes user input to components
+
+## Backend
+
+Python 3.13, FastAPI + uvicorn on `0.0.0.0:8000`. The core is a graph of threaded components connected by pub/sub channels. Each component runs in its own daemon thread.
+
+Key packages: `torch`, `litellm`, `smplx`, `clip`, `onnxruntime`, `sounddevice`, `opencv`
+
+### Startup Sequence
+
+The FastAPI lifespan hook:
+1. Creates `~/Documents/OpenNeuro/projects/` if needed
+2. Copies bundled presets from `backend/assets/presets/` to user projects (first run only)
+3. Installs global stdout/stderr capture for per-component logging
+4. Loads `AppConfig` from `~/Documents/OpenNeuro/config.json`
+5. Initializes `GraphManager` with empty graph
+6. Starts a parent process watchdog (exits if Tauri/bun parent dies)
+
+CORS is fully open (`allow_origins=["*"]`).
+
+### Router Mounting
+
+Eight API routers:
+- `/graph` — node/edge CRUD, run/stop, save
+- `/component` — registry lookup, type checking, dynamic options
+- `/projects`, `/project` — project management
+- `/env` — environment variables (`.env` file)
+- `/metrics` — SSE metrics stream
+- `/logs` — per-component log history
+- `/ui` — WebSocket UI channels
+
+### Log Capture
+
+`ComponentLogStore` captures stdout/stderr from component threads:
+- Maps thread IDs to node IDs
+- Buffers partial lines, flushes on newline
+- Keeps up to 1000 entries per node
+- Each entry: sequence number, timestamp, stream type, text
+
+### GPU-Aware Dependencies
+
+The `pyproject.toml` has conditional dependency groups:
+- **Default (CUDA)**: PyTorch from `pytorch-cu126` index
+- **ROCm**: PyTorch from `pytorch-rocm` index (`--group rocm --no-group cuda`)
+- **macOS**: Standard PyTorch wheels with MPS acceleration
+
+CUDA and ROCm groups conflict — only one can be active.
+
+## Frontend
+
+React 19 + TypeScript. The graph editor uses `@xyflow/react` for spatial node layout with drag-to-connect wiring. Tailwind CSS for styling.
+
+The frontend is the source of truth for graph topology — it sends CRUD operations to the backend, which reconciles channels and manages execution.
+
+### Vite Configuration
+
+Dev server proxies 7 backend paths (`/graph`, `/metrics`, `/component`, `/projects`, `/project`, `/env`, `/logs`) to `localhost:8000`.
+
+A custom upload middleware handles `POST /upload` — parses multipart form data, saves files with UUID names to `frontend/dev/uploads/`, returns the file path. This is dev-only; in Tauri, the native file dialog returns paths directly.
+
+## Desktop (Tauri)
+
+Tauri 2 (Rust) wraps the frontend as a native app.
+
+### Startup Sequence
+
+1. **GPU Detection** (`detect_gpu_extra()`):
+   - macOS: returns None (uses MPS)
+   - Linux: queries `gfxinfo::active_gpu()` — NVIDIA→default, AMD→"rocm"
+   - Fallback: defaults to CUDA
+
+2. **Dependency Sync**: `uv sync` with conditional group flags
+
+3. **Backend Spawn**: `.venv/bin/python -m src.main` (working dir: `backend/`)
+
+4. **Lifecycle**: Backend PID stored in static mutex. Ctrl+C handler and app exit both kill the backend.
+
+Plugins: `tauri-plugin-shell` (process spawning), `tauri-plugin-dialog` (native file picker)
+
+## Development
+
+```bash
+# Dev mode (Vite + FastAPI, hot reload on both)
+bun dev
+
+# Desktop dev mode (Tauri + Vite + FastAPI)
+bun tauri dev
+
+# Backend only
+cd backend && uv run python -m src.main
+
+# Frontend only
+cd frontend && bun run dev
+```
+
+`bun dev` runs `scripts/dev.ts` which spawns backend (`uv run python -m src.main`) and frontend (`bun run dev`) in parallel, with a SIGINT handler that kills both.
+
+## Configuration & Paths
+
+```
+~/Documents/OpenNeuro/
+├── config.json          AppConfig (current_project name)
+├── .env                 Environment variables (API keys, etc.)
+└── projects/
+    ├── MyProject/
+    │   ├── graph.json   Serialized graph
+    │   └── thumbnail.png
+    └── Agent/           (copied from bundled presets on first run)
+        └── graph.json
+
+backend/assets/
+├── presets/             Bundled example pipelines
+├── character_cards/     SillyTavern PNG character cards
+└── dart_control/        DART model checkpoints
+```0:{"buildId":"foE4UiXiIaiax_BvQZ75A","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Communication","id":"communication","depth":2},{"value":"Backend","id":"backend","depth":2},{"value":"Startup Sequence","id":"startup-sequence","depth":3},{"value":"Router Mounting","id":"router-mounting","depth":3},{"value":"Log Capture","id":"log-capture","depth":3},{"value":"GPU-Aware Dependencies","id":"gpu-aware-dependencies","depth":3},{"value":"Frontend","id":"frontend","depth":2},{"value":"Vite Configuration","id":"vite-configuration","depth":3},{"value":"Desktop (Tauri)","id":"desktop-tauri","depth":2},{"value":"Startup Sequence","id":"startup-sequence-1","depth":3},{"value":"Development","id":"development","depth":2},{"value":"Configuration & Paths","id":"configuration--paths","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"System Overview","filePath":"content/developer-guide/architecture.mdx"},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"loading":null,"isPartial":false}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["System Overview","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"OpenNeuro has three subsystems:"}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$L9",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"OpenNeuro/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── backend/          Python FastAPI server + pipeline engine"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│   └── src/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       ├── core/     Component hierarchy, channels, graphs, frames"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       ├── api/      REST/WS endpoints"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       └── main.py   App entry point"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── frontend/         React graph editor"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│   └── src/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       ├── components/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       ├── hooks/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       ├── lib/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│       └── App.tsx"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── src-tauri/        Rust desktop shell"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"│   └── src/lib.rs"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"└── docs/             Nextra docsite"}]}]]}]]}]]}],"\n",["$","h2",null,{"id":"communication","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Communication",["$","$La",null,{"id":"communication"}]]}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$L9",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"Frontend ──REST──► Backend (graph CRUD, component registry, project management)"}]}],"\n","$Lb","\n","$Lc"]}]]}]]}],"\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c","\n","$L2d","\n","$L2e"]}]
+8:["$","$L2f",null,{"children":["$","$30",null,{"name":"Next.MetadataOutlet","children":"$@31"}]}]
+b:["$","span",null,{"children":["$","span",null,{"children":"Frontend ◄──SSE──  Backend (live metrics every 100ms)"}]}]
+c:["$","span",null,{"children":["$","span",null,{"children":"Frontend ◄──WS───► Backend (UI channels: video overlays, text input/output)"}]}]
+d:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"REST"}]," — Graph operations, component listing, project load/save, environment config"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"SSE"}]," (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/metrics"}],") — Per-node status, per-slot throughput/lag deltas"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"WebSocket"}]," (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/ui/ws"}],") — Bidirectional UI channels: components push video/text to frontend, frontend pushes user input to components"]}],"\n"]}]
+e:["$","h2",null,{"id":"backend","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Backend",["$","$La",null,{"id":"backend"}]]}]
+f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Python 3.13, FastAPI + uvicorn on ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"0.0.0.0:8000"}],". The core is a graph of threaded components connected by pub/sub channels. Each component runs in its own daemon thread."]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Key packages: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"torch"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"litellm"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"smplx"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"clip"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"onnxruntime"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sounddevice"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"opencv"}]]}]
+11:["$","h3",null,{"id":"startup-sequence","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Startup Sequence",["$","$La",null,{"id":"startup-sequence"}]]}]
+12:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The FastAPI lifespan hook:"}]
+13:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Creates ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"~/Documents/OpenNeuro/projects/"}]," if needed"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Copies bundled presets from ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"backend/assets/presets/"}]," to user projects (first run only)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Installs global stdout/stderr capture for per-component logging"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Loads ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AppConfig"}]," from ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"~/Documents/OpenNeuro/config.json"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Initializes ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"GraphManager"}]," with empty graph"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Starts a parent process watchdog (exits if Tauri/bun parent dies)"}],"\n"]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["CORS is fully open (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"allow_origins=[\"*\"]"}],")."]}]
+15:["$","h3",null,{"id":"router-mounting","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Router Mounting",["$","$La",null,{"id":"router-mounting"}]]}]
+16:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Eight API routers:"}]
+17:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/graph"}]," — node/edge CRUD, run/stop, save"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/component"}]," — registry lookup, type checking, dynamic options"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/projects"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/project"}]," — project management"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/env"}]," — environment variables (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":".env"}]," file)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/metrics"}]," — SSE metrics stream"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/logs"}]," — per-component log history"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/ui"}]," — WebSocket UI channels"]}],"\n"]}]
+18:["$","h3",null,{"id":"log-capture","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Log Capture",["$","$La",null,{"id":"log-capture"}]]}]
+19:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ComponentLogStore"}]," captures stdout/stderr from component threads:"]}]
+1a:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Maps thread IDs to node IDs"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Buffers partial lines, flushes on newline"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Keeps up to 1000 entries per node"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Each entry: sequence number, timestamp, stream type, text"}],"\n"]}]
+1b:["$","h3",null,{"id":"gpu-aware-dependencies","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["GPU-Aware Dependencies",["$","$La",null,{"id":"gpu-aware-dependencies"}]]}]
+1c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["The ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"pyproject.toml"}]," has conditional dependency groups:"]}]
+1d:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Default (CUDA)"}],": PyTorch from ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"pytorch-cu126"}]," index"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"ROCm"}],": PyTorch from ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"pytorch-rocm"}]," index (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"--group rocm --no-group cuda"}],")"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"macOS"}],": Standard PyTorch wheels with MPS acceleration"]}],"\n"]}]
+1e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"CUDA and ROCm groups conflict — only one can be active."}]
+1f:["$","h2",null,{"id":"frontend","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Frontend",["$","$La",null,{"id":"frontend"}]]}]
+20:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["React 19 + TypeScript. The graph editor uses ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"@xyflow/react"}]," for spatial node layout with drag-to-connect wiring. Tailwind CSS for styling."]}]
+21:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The frontend is the source of truth for graph topology — it sends CRUD operations to the backend, which reconciles channels and manages execution."}]
+22:["$","h3",null,{"id":"vite-configuration","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Vite Configuration",["$","$La",null,{"id":"vite-configuration"}]]}]
+23:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Dev server proxies 7 backend paths (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/graph"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/metrics"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/component"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/projects"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/project"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/env"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/logs"}],") to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"localhost:8000"}],"."]}]
+24:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["A custom upload middleware handles ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"POST /upload"}]," — parses multipart form data, saves files with UUID names to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"frontend/dev/uploads/"}],", returns the file path. This is dev-only; in Tauri, the native file dialog returns paths directly."]}]
+25:["$","h2",null,{"id":"desktop-tauri","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Desktop (Tauri)",["$","$La",null,{"id":"desktop-tauri"}]]}]
+26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Tauri 2 (Rust) wraps the frontend as a native app."}]
+27:["$","h3",null,{"id":"startup-sequence-1","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["Startup Sequence",["$","$La",null,{"id":"startup-sequence-1"}]]}]
+28:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"GPU Detection"}]," (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"detect_gpu_extra()"}],"):"]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"macOS: returns None (uses MPS)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Linux: queries ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"gfxinfo::active_gpu()"}]," — NVIDIA→default, AMD→“rocm”"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Fallback: defaults to CUDA"}],"\n"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Dependency Sync"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"uv sync"}]," with conditional group flags"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Backend Spawn"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":".venv/bin/python -m src.main"}]," (working dir: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"backend/"}],")"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","strong",null,{"children":"Lifecycle"}],": Backend PID stored in static mutex. Ctrl+C handler and app exit both kill the backend."]}],"\n"]}],"\n"]}]
+29:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Plugins: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"tauri-plugin-shell"}]," (process spawning), ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"tauri-plugin-dialog"}]," (native file picker)"]}]
+2a:["$","h2",null,{"id":"development","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Development",["$","$La",null,{"id":"development"}]]}]
+2b:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$L9",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"# Dev mode (Vite + FastAPI, hot reload on both)"}]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"bun"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" dev"}]]}],"\n",["$","span",null,{"children":" "}],"\n",["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"# Desktop dev mode (Tauri + Vite + FastAPI)"}]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"bun"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" tauri"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" dev"}]]}],"\n",["$","span",null,{"children":" "}],"\n",["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"# Backend only"}]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"cd"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" backend"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" && "}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"uv"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" run"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" python"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" -m"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" src.main"}]]}],"\n",["$","span",null,{"children":" "}],"\n",["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"# Frontend only"}]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"cd"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" frontend"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":" && "}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"bun"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" run"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" dev"}]]}]]}]]}]]}]
+2c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"bun dev"}]," runs ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"scripts/dev.ts"}]," which spawns backend (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"uv run python -m src.main"}],") and frontend (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"bun run dev"}],") in parallel, with a SIGINT handler that kills both."]}]
+2d:["$","h2",null,{"id":"configuration--paths","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Configuration & Paths",["$","$La",null,{"id":"configuration--paths"}]]}]
+2e:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$L9",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"~/Documents/OpenNeuro/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── config.json          AppConfig (current_project name)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── .env                 Environment variables (API keys, etc.)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"└── projects/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"    ├── MyProject/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"    │   ├── graph.json   Serialized graph"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"    │   └── thumbnail.png"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"    └── Agent/           (copied from bundled presets on first run)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"        └── graph.json"}]}],"\n",["$","span",null,{"children":["$","span",null,{}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"backend/assets/"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── presets/             Bundled example pipelines"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"├── character_cards/     SillyTavern PNG character cards"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"└── dart_control/        DART model checkpoints"}]}]]}]]}]]}]
+31:null

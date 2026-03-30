@@ -1,0 +1,111 @@
+1:"$Sreact.fragment"
+2:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+3:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+4:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+9:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+1d:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+1e:"$Sreact.suspense"
+5:Tacb,# Frontend Architecture
+
+React 19 + TypeScript graph editor built on `@xyflow/react`.
+
+## Stack
+
+- **@xyflow/react** — Spatial graph editing (drag, pan, zoom, connect)
+- **Tailwind CSS** — Styling
+- **Lucide React** — Icons
+- **Vite** — Dev server + bundler
+
+## Key Components
+
+### App.tsx
+
+Root component. Manages:
+- ReactFlow nodes/edges state
+- Component registry (fetched from backend)
+- Metrics subscription (SSE)
+- Graph lifecycle (load/save/run/stop)
+- Routing between ProjectChooser and main editor
+
+### GraphNode.tsx
+
+Rendered node in the graph canvas:
+- Component name + status indicator (colored dot: green=running, yellow=setup, red=stopped)
+- I/O port labels with type annotations
+- Category badge (source/conduit/sink)
+- Live metrics overlay (msg/s, lag, buffer depth)
+- Embedded UI controls (text input, video stream)
+
+### ConfiguringNode.tsx
+
+Modal form for creating/editing a node:
+- Introspects `init` JSON schema from component metadata
+- Renders appropriate widgets: text input, number input, dropdown, file picker
+- Handles nested Pydantic models (flattened to `param.field` keys)
+- Supports `Literal` types as dropdowns (unwraps `anyOf` for nullable literals)
+- Supports `Path` types as file picker (Tauri native dialog or Vite upload)
+- Fetches dynamic options via `POST /component/{'{name}'}/options`
+
+### NodeSidebar.tsx
+
+Component picker panel:
+- Groups components by IO tag (source/conduit/sink) then functionality
+- Search filter at the top
+- Drag-to-create: drag a component from sidebar onto the canvas
+- Collapsible categories
+- Components with no tags appear under "Other"
+
+### MetricsOverlay.tsx
+
+Real-time stats:
+- Global message/byte throughput
+- Per-node status badges
+- Settings button for env editor
+
+## Hooks
+
+| Hook | Purpose |
+|------|---------|
+| `useGraphData()` | Load nodes/edges, subscribe to metrics SSE |
+| `useSSE(url)` | Generic EventSource wrapper |
+| `useUIChannel()` | WebSocket connection to `/ui/ws` |
+| `useUITextOutput(nodeId, slot)` | Subscribe to component text output |
+| `useUIVideoOutput(nodeId, slot)` | Subscribe to component video output |
+| `useUIInput(nodeId, slot)` | Send text to component input |
+| `useComponentLogs(nodeId)` | Fetch + refresh component logs |
+
+## API Client (`lib/api.ts`)
+
+Thin wrappers around `fetch()` for all backend endpoints. Functions mirror the REST API: `fetchComponents()`, `createNode()`, `createEdge()`, `startAll()`, `saveGraph()`, etc.
+
+## Type System (`lib/typecheck.ts`)
+
+Edge validation:
+- Checks that output type is assignable to input type
+- Uses `/component/is-subtype` endpoint for runtime subtype checks
+- Caches concrete type set for performance
+- Runs automatically after project load and on graph changes
+- Invalid edges highlighted in the UI0:{"buildId":"foE4UiXiIaiax_BvQZ75A","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Stack","id":"stack","depth":2},{"value":"Key Components","id":"key-components","depth":2},{"value":"App.tsx","id":"apptsx","depth":3},{"value":"GraphNode.tsx","id":"graphnodetsx","depth":3},{"value":"ConfiguringNode.tsx","id":"configuringnodetsx","depth":3},{"value":"NodeSidebar.tsx","id":"nodesidebartsx","depth":3},{"value":"MetricsOverlay.tsx","id":"metricsoverlaytsx","depth":3},{"value":"Hooks","id":"hooks","depth":2},{"value":[["$","$1",".0",{"children":["API Client (",["$","code",".1",{"className":"nextra-code","dir":"ltr","children":"lib/api.ts"}],")"]}]],"id":"api-client-libapits","depth":2},{"value":[["$","$1",".0",{"children":["Type System (",["$","code",".1",{"className":"nextra-code","dir":"ltr","children":"lib/typecheck.ts"}],")"]}]],"id":"type-system-libtypecheckts","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Frontend Architecture","filePath":"content/developer-guide/frontend.mdx"},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"loading":null,"isPartial":false}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Frontend Architecture","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["React 19 + TypeScript graph editor built on ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"@xyflow/react"}],"."]}],"\n",["$","h2",null,{"id":"stack","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Stack",["$","$L9",null,{"id":"stack"}]]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"@xyflow/react"}]," — Spatial graph editing (drag, pan, zoom, connect)"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Tailwind CSS"}]," — Styling"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Lucide React"}]," — Icons"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Vite"}]," — Dev server + bundler"]}],"\n"]}],"\n",["$","h2",null,{"id":"key-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Key Components",["$","$L9",null,{"id":"key-components"}]]}],"\n",["$","h3",null,{"id":"apptsx","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["App.tsx",["$","$L9",null,{"id":"apptsx"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Root component. Manages:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"ReactFlow nodes/edges state"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Component registry (fetched from backend)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Metrics subscription (SSE)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Graph lifecycle (load/save/run/stop)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Routing between ProjectChooser and main editor"}],"\n"]}],"\n",["$","h3",null,{"id":"graphnodetsx","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["GraphNode.tsx",["$","$L9",null,{"id":"graphnodetsx"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Rendered node in the graph canvas:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Component name + status indicator (colored dot: green=running, yellow=setup, red=stopped)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"I/O port labels with type annotations"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Category badge (source/conduit/sink)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Live metrics overlay (msg/s, lag, buffer depth)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Embedded UI controls (text input, video stream)"}],"\n"]}],"\n",["$","h3",null,{"id":"configuringnodetsx","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["ConfiguringNode.tsx",["$","$L9",null,{"id":"configuringnodetsx"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Modal form for creating/editing a node:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n","$La","\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n"]}],"\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c"]}]
+8:["$","$L1d",null,{"children":["$","$1e",null,{"name":"Next.MetadataOutlet","children":"$@1f"}]}]
+a:["$","li",null,{"className":"x:my-[.5em]","children":["Introspects ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"init"}]," JSON schema from component metadata"]}]
+b:["$","li",null,{"className":"x:my-[.5em]","children":"Renders appropriate widgets: text input, number input, dropdown, file picker"}]
+c:["$","li",null,{"className":"x:my-[.5em]","children":["Handles nested Pydantic models (flattened to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"param.field"}]," keys)"]}]
+d:["$","li",null,{"className":"x:my-[.5em]","children":["Supports ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Literal"}]," types as dropdowns (unwraps ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"anyOf"}]," for nullable literals)"]}]
+e:["$","li",null,{"className":"x:my-[.5em]","children":["Supports ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Path"}]," types as file picker (Tauri native dialog or Vite upload)"]}]
+f:["$","li",null,{"className":"x:my-[.5em]","children":["Fetches dynamic options via ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"POST /component/{'{name}'}/options"}]]}]
+10:["$","h3",null,{"id":"nodesidebartsx","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["NodeSidebar.tsx",["$","$L9",null,{"id":"nodesidebartsx"}]]}]
+11:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Component picker panel:"}]
+12:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Groups components by IO tag (source/conduit/sink) then functionality"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Search filter at the top"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Drag-to-create: drag a component from sidebar onto the canvas"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Collapsible categories"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Components with no tags appear under “Other”"}],"\n"]}]
+13:["$","h3",null,{"id":"metricsoverlaytsx","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["MetricsOverlay.tsx",["$","$L9",null,{"id":"metricsoverlaytsx"}]]}]
+14:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Real-time stats:"}]
+15:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Global message/byte throughput"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Per-node status badges"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Settings button for env editor"}],"\n"]}]
+16:["$","h2",null,{"id":"hooks","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Hooks",["$","$L9",null,{"id":"hooks"}]]}]
+17:["$","table",null,{"className":"x:block x:overflow-x-auto nextra-scrollbar x:not-first:mt-[1.25em] x:p-0","children":[["$","thead",null,{"children":["$","tr",null,{"children":[["$","th",null,{"children":"Hook","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}],["$","th",null,{"children":"Purpose","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:font-semibold x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]}],["$","tbody",null,{"children":[["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useGraphData()"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Load nodes/edges, subscribe to metrics SSE","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useSSE(url)"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Generic EventSource wrapper","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useUIChannel()"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":["WebSocket connection to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/ui/ws"}]],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useUITextOutput(nodeId, slot)"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Subscribe to component text output","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useUIVideoOutput(nodeId, slot)"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Subscribe to component video output","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useUIInput(nodeId, slot)"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Send text to component input","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}],["$","tr",null,{"children":[["$","td",null,{"children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"useComponentLogs(nodeId)"}],"className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}],["$","td",null,{"children":"Fetch + refresh component logs","className":"x:m-0 x:border x:border-gray-300 x:px-4 x:py-2 x:dark:border-gray-600"}]],"className":"x:m-0 x:border-t x:border-gray-300 x:p-0 x:dark:border-gray-600 x:even:bg-gray-100 x:even:dark:bg-gray-600/20"}]]}]]}]
+18:["$","h2",null,{"id":"api-client-libapits","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":[["API Client (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"lib/api.ts"}],")"],["$","$L9",null,{"id":"api-client-libapits"}]]}]
+19:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Thin wrappers around ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"fetch()"}]," for all backend endpoints. Functions mirror the REST API: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"fetchComponents()"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"createNode()"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"createEdge()"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"startAll()"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"saveGraph()"}],", etc."]}]
+1a:["$","h2",null,{"id":"type-system-libtypecheckts","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":[["Type System (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"lib/typecheck.ts"}],")"],["$","$L9",null,{"id":"type-system-libtypecheckts"}]]}]
+1b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Edge validation:"}]
+1c:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Checks that output type is assignable to input type"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Uses ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"/component/is-subtype"}]," endpoint for runtime subtype checks"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Caches concrete type set for performance"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Runs automatically after project load and on graph changes"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Invalid edges highlighted in the UI"}],"\n"]}]
+1f:null

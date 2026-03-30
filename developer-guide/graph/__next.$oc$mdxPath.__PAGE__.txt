@@ -1,0 +1,142 @@
+1:"$Sreact.fragment"
+2:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+3:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+4:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+9:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+a:I[83987,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ToggleWordWrapButton"]
+2d:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+2e:"$Sreact.suspense"
+5:Te66,# Graph Engine
+
+The graph engine manages the pipeline topology, wires channels between components, and orchestrates execution.
+
+## Data Model
+
+```python
+class Node(BaseModel):
+    id_: str              # UUID
+    type: str             # component class name (e.g. "LLM", "VAD")
+    init_args: dict       # constructor parameters
+    x: float, y: float    # canvas position
+    sub_graph: Graph | None  # nested graph for composites
+
+class Edge(BaseModel):
+    source_node: str
+    source_slot: str
+    target_node: str
+    target_slot: str
+
+class Graph(BaseModel):
+    nodes: dict[str, Node]
+    edges: list[Edge]
+```
+
+## GraphManager
+
+Owns the graph, components, and channel wiring.
+
+### CRUD
+
+- `add_node(type, init_args)` — Instantiate component, add to graph
+- `delete_node(id)` — Stop component, remove connected edges, reconcile
+- `add_edge(edge)` / `delete_edge(edge)` — Connect/disconnect, reconcile
+- `update_node_init_args(id, args)` — Re-instantiate component, restart if running
+
+### Channel Reconciliation (`_reconcile()`)
+
+When edges change, the manager recomputes the optimal channel layout:
+
+1. Group receivers by their sender sets (edges with the same source share a channel)
+2. Reuse existing channels where the sender set hasn't changed
+3. Create new channels for new sender sets
+4. Build Sender handles (one per output slot, broadcasting to all connected channels)
+5. Build Receiver handles (one per input slot)
+
+This minimizes channel count — if two inputs read from the same output, they share one channel with two cursors (instead of two separate channels). The `_group()` method implements this by building a `frozenset[SenderKey] → list[ReceiverKey]` mapping.
+
+### Execution (`run()`)
+
+```
+1. Stop all running components
+2. Clear UI channels
+3. For each node:
+   a. Build input handles (Receiver for each connected input, None for optional unconnected)
+   b. Build output handles (Sender for each output, no-op Sender if unconnected)
+   c. Wire UI channels (create Channel + Sender/Receiver pairs)
+   d. Wire all Receivers (register cursors)
+4. Call emit() on all EmitOnStart components
+5. Start all component threads
+6. Notify frontend (bump _ui_version, fire _ui_changed event)
+```
+
+The ordering matters:
+- **Step 3d**: Receivers register cursors before any data is sent
+- **Step 4**: EmitOnStart sends after cursors exist, so data is captured
+- **Step 5**: Threads start after emits, so they see initial values
+
+### UI Channel Wiring
+
+For each `UIReceiver[T]` input slot:
+- Creates a `Channel[T]`
+- Component gets a `UIReceiver(channel)` for reading
+- Server stores a `Sender(channel)` in `_ui_senders[(node_id, slot)]` for the WebSocket bridge to push into
+
+For each `UISender[T]` output slot:
+- Creates a `Channel[T]`
+- Component gets a `UISender(channel)` for writing
+- Server stores a `Receiver(channel)` in `_ui_receivers[(node_id, slot)]` for the WebSocket bridge to read from
+
+After all components start, `_ui_version` increments and `_ui_changed` fires, waking the WebSocket watcher to spawn async readers for the new channels.
+
+### Stop (`stop()`)
+
+Sets `stop_event` on all components. Threads exit when they see the flag or when iteration returns `None`. Idempotent — second call is a no-op.
+
+## Composite Components
+
+When the user groups nodes into a subgraph:
+
+1. Selected nodes + internal edges are extracted into a sub-`Graph`
+2. A `CompositeComponent` wraps it
+3. Boundary ports (unconnected slots of inner nodes) become the composite's external interface
+4. On `start()`, the composite creates its own inner `GraphManager` and runs it
+
+Ungrouping reverses the process — inner nodes are re-exposed and the composite is deleted.0:{"buildId":"foE4UiXiIaiax_BvQZ75A","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Data Model","id":"data-model","depth":2},{"value":"GraphManager","id":"graphmanager","depth":2},{"value":"CRUD","id":"crud","depth":3},{"value":[["$","$1",".0",{"children":["Channel Reconciliation (",["$","code",".1",{"className":"nextra-code","dir":"ltr","children":"_reconcile()"}],")"]}]],"id":"channel-reconciliation-_reconcile","depth":3},{"value":[["$","$1",".0",{"children":["Execution (",["$","code",".1",{"className":"nextra-code","dir":"ltr","children":"run()"}],")"]}]],"id":"execution-run","depth":3},{"value":"UI Channel Wiring","id":"ui-channel-wiring","depth":3},{"value":[["$","$1",".0",{"children":["Stop (",["$","code",".1",{"className":"nextra-code","dir":"ltr","children":"stop()"}],")"]}]],"id":"stop-stop","depth":3},{"value":"Composite Components","id":"composite-components","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"Graph Engine","filePath":"content/developer-guide/graph.mdx"},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"loading":null,"isPartial":false}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["Graph Engine","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The graph engine manages the pipeline topology, wires channels between components, and orchestrates execution."}],"\n",["$","h2",null,{"id":"data-model","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Data Model",["$","$L9",null,{"id":"data-model"}]]}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":" Node"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"("}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"BaseModel"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"):"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    id_: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"              # UUID"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"    type"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":": "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"             # component class name (e.g. \"LLM\", \"VAD\")"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    init_args: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"dict"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"       # constructor parameters"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    x: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"float"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":", y: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"float"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"    # canvas position"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    sub_graph: Graph "}],["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"|"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" None"}],["$","span",null,{"style":{"--shiki-light":"#6A737D","--shiki-dark":"#6A737D"},"children":"  # nested graph for composites"}]]}],"\n","$Lb","\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14"]}]]}]]}],"\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27","\n","$L28","\n","$L29","\n","$L2a","\n","$L2b","\n","$L2c"]}]
+8:["$","$L2d",null,{"children":["$","$2e",null,{"name":"Next.MetadataOutlet","children":"$@2f"}]}]
+b:["$","span",null,{"children":" "}]
+c:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":" Edge"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"("}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"BaseModel"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"):"}]]}]
+d:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    source_node: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}]]}]
+e:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    source_slot: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}]]}]
+f:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    target_node: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}]]}]
+10:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    target_slot: "}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}]]}]
+11:["$","span",null,{"children":" "}]
+12:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#D73A49","--shiki-dark":"#F97583"},"children":"class"}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":" Graph"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"("}],["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"BaseModel"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"):"}]]}]
+13:["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    nodes: dict["}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"str"}],["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":", Node]"}]]}]
+14:["$","span",null,{"children":["$","span",null,{"style":{"--shiki-light":"#24292E","--shiki-dark":"#E1E4E8"},"children":"    edges: list[Edge]"}]}]
+15:["$","h2",null,{"id":"graphmanager","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["GraphManager",["$","$L9",null,{"id":"graphmanager"}]]}]
+16:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Owns the graph, components, and channel wiring."}]
+17:["$","h3",null,{"id":"crud","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["CRUD",["$","$L9",null,{"id":"crud"}]]}]
+18:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"add_node(type, init_args)"}]," — Instantiate component, add to graph"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"delete_node(id)"}]," — Stop component, remove connected edges, reconcile"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"add_edge(edge)"}]," / ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"delete_edge(edge)"}]," — Connect/disconnect, reconcile"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"update_node_init_args(id, args)"}]," — Re-instantiate component, restart if running"]}],"\n"]}]
+19:["$","h3",null,{"id":"channel-reconciliation-_reconcile","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":[["Channel Reconciliation (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_reconcile()"}],")"],["$","$L9",null,{"id":"channel-reconciliation-_reconcile"}]]}]
+1a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"When edges change, the manager recomputes the optimal channel layout:"}]
+1b:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":"Group receivers by their sender sets (edges with the same source share a channel)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Reuse existing channels where the sender set hasn’t changed"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Create new channels for new sender sets"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Build Sender handles (one per output slot, broadcasting to all connected channels)"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Build Receiver handles (one per input slot)"}],"\n"]}]
+1c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["This minimizes channel count — if two inputs read from the same output, they share one channel with two cursors (instead of two separate channels). The ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_group()"}]," method implements this by building a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"frozenset[SenderKey] → list[ReceiverKey]"}]," mapping."]}]
+1d:["$","h3",null,{"id":"execution-run","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":[["Execution (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"run()"}],")"],["$","$L9",null,{"id":"execution-run"}]]}]
+1e:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"1. Stop all running components"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"2. Clear UI channels"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"3. For each node:"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"   a. Build input handles (Receiver for each connected input, None for optional unconnected)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"   b. Build output handles (Sender for each output, no-op Sender if unconnected)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"   c. Wire UI channels (create Channel + Sender/Receiver pairs)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"   d. Wire all Receivers (register cursors)"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"4. Call emit() on all EmitOnStart components"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"5. Start all component threads"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"6. Notify frontend (bump _ui_version, fire _ui_changed event)"}]}]]}]]}]]}]
+1f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The ordering matters:"}]
+20:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Step 3d"}],": Receivers register cursors before any data is sent"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Step 4"}],": EmitOnStart sends after cursors exist, so data is captured"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","strong",null,{"children":"Step 5"}],": Threads start after emits, so they see initial values"]}],"\n"]}]
+21:["$","h3",null,{"id":"ui-channel-wiring","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["UI Channel Wiring",["$","$L9",null,{"id":"ui-channel-wiring"}]]}]
+22:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["For each ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"UIReceiver[T]"}]," input slot:"]}]
+23:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Creates a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Channel[T]"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Component gets a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"UIReceiver(channel)"}]," for reading"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Server stores a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Sender(channel)"}]," in ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_ui_senders[(node_id, slot)]"}]," for the WebSocket bridge to push into"]}],"\n"]}]
+24:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["For each ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"UISender[T]"}]," output slot:"]}]
+25:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Creates a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Channel[T]"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Component gets a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"UISender(channel)"}]," for writing"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Server stores a ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Receiver(channel)"}]," in ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_ui_receivers[(node_id, slot)]"}]," for the WebSocket bridge to read from"]}],"\n"]}]
+26:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["After all components start, ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_ui_version"}]," increments and ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"_ui_changed"}]," fires, waking the WebSocket watcher to spawn async readers for the new channels."]}]
+27:["$","h3",null,{"id":"stop-stop","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":[["Stop (",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"stop()"}],")"],["$","$L9",null,{"id":"stop-stop"}]]}]
+28:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Sets ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"stop_event"}]," on all components. Threads exit when they see the flag or when iteration returns ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"None"}],". Idempotent — second call is a no-op."]}]
+29:["$","h2",null,{"id":"composite-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Composite Components",["$","$L9",null,{"id":"composite-components"}]]}]
+2a:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"When the user groups nodes into a subgraph:"}]
+2b:["$","ol",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-decimal x:ms-6","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Selected nodes + internal edges are extracted into a sub-",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"Graph"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["A ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CompositeComponent"}]," wraps it"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":"Boundary ports (unconnected slots of inner nodes) become the composite’s external interface"}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["On ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"start()"}],", the composite creates its own inner ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"GraphManager"}]," and runs it"]}],"\n"]}]
+2c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Ungrouping reverses the process — inner nodes are re-exposed and the composite is deleted."}]
+2f:null
