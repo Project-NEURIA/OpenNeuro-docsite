@@ -1,0 +1,162 @@
+1:"$Sreact.fragment"
+2:I[55169,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"TOCProvider"]
+3:I[769,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"Sidebar"]
+4:I[47486,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ClientWrapper"]
+9:I[63894,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"HeadingAnchor"]
+a:I[83987,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/b12c1e175988307a.js","/_next/static/chunks/5147636f9e20de66.js","/_next/static/chunks/d80ae0e4320bdf87.js"],"ToggleWordWrapButton"]
+28:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+29:"$Sreact.suspense"
+5:Tc9c,# VRChat Audio Routing
+
+This guide explains how to use `AudioIn`, `AudioOut`, `RemoteAudioIn`, and
+`RemoteAudioOut` with VB-Cable A+B so OpenNeuro can hear VRChat voice chat and
+talk back to other players.
+
+## Cable Mapping
+
+Use the two virtual cables like this:
+
+- `CABLE-A` carries **AI speech into VRChat's microphone**
+- `CABLE-B` carries **VRChat's game audio into OpenNeuro**
+
+The recommended signal flow is:
+
+```text
+OpenNeuro AudioOut -> CABLE-A Input -> CABLE-A Output -> VRChat microphone
+Windows default output / VRChat output -> CABLE-B Input -> CABLE-B Output -> OpenNeuro AudioIn
+```
+
+## Important VRChat Note
+
+VRChat lets you change the **microphone** device, but its **output** follows
+the Windows system playback device. That means:
+
+- Set the VRChat microphone to `CABLE-A Output`
+- Set the Windows default playback device to `CABLE-B Input`
+
+If you still want to hear the game locally, enable **Listen to this device** on
+`CABLE-B Output` and route it to your real headphones or speakers.
+
+## Local Setup
+
+Use this when OpenNeuro and VRChat are running on the **same machine**.
+
+### OpenNeuro Components
+
+Configure the graph like this:
+
+- `AudioIn`
+  - `device`: `CABLE-B Output`
+  - `sample_rate`: `48000`
+  - `channels`: `2`
+  - `frame_ms`: `20`
+- `AudioOut`
+  - `device`: `CABLE-A Input`
+  - `sample_rate`: `48000`
+  - `channels`: `1`
+
+### VRChat / Windows
+
+- In VRChat, set **Microphone** to `CABLE-A Output`
+- In Windows, set the **default playback device** to `CABLE-B Input`
+- Optional: enable **Listen to this device** on `CABLE-B Output` so you can
+  monitor game audio through your real headset
+
+## Remote Setup
+
+Use this when OpenNeuro and VRChat are running on **different machines**.
+
+### On the Game Machine
+
+Install VB-Cable A+B and start the bridge server:
+
+```bash
+cd backend
+uv run python -m src.lib.audio.remote_audio_server
+```
+
+By default the bridge assumes:
+
+- `--input-device "CABLE-B Output"`
+- `--output-device "CABLE-A Input"`
+
+If your device names differ, list them first:
+
+```bash
+cd backend
+uv run python -m src.lib.audio.remote_audio_server --list-devices
+```
+
+Then launch the server with explicit device names if needed:
+
+```bash
+cd backend
+uv run python -m src.lib.audio.remote_audio_server --input-device "CABLE-B Output (VB-Audio Virtual Cable B)" --output-device "CABLE-A Input (VB-Audio Virtual Cable A)"
+```
+
+Also configure the game machine the same way as the local setup:
+
+- In VRChat, set **Microphone** to `CABLE-A Output`
+- In Windows, set the **default playback device** to `CABLE-B Input`
+
+### On the OpenNeuro Machine
+
+Point both remote components at the game machine's bridge:
+
+- `RemoteAudioIn`
+  - `server_url`: `ws://<game-machine-ip>:8765/ws/audio`
+  - `sample_rate`: `48000`
+  - `channels`: `2`
+  - `frame_ms`: `20`
+- `RemoteAudioOut`
+  - `server_url`: `ws://<game-machine-ip>:8765/ws/audio`
+  - `sample_rate`: `48000`
+  - `channels`: `1`
+  - `frame_ms`: `20`
+
+## Recommended Graphs
+
+For voice-to-voice VRChat flows:
+
+- `AudioIn` or `RemoteAudioIn`
+- `VAD`
+- `ASR`
+- `LLM`
+- `TTS`
+- `AudioOut` or `RemoteAudioOut`
+
+If your downstream audio stack expects mono, that's okay: `AudioFrame`
+conversion inside the pipeline will down-mix and resample automatically.0:{"buildId":"zvOVYKNq5NOY5M6BUBI_4","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"x:mx-auto x:flex x:max-w-(--nextra-content-width)","children":["$","$L2",null,{"value":[{"value":"Cable Mapping","id":"cable-mapping","depth":2},{"value":"Important VRChat Note","id":"important-vrchat-note","depth":2},{"value":"Local Setup","id":"local-setup","depth":2},{"value":"OpenNeuro Components","id":"openneuro-components","depth":3},{"value":"VRChat / Windows","id":"vrchat--windows","depth":3},{"value":"Remote Setup","id":"remote-setup","depth":2},{"value":"On the Game Machine","id":"on-the-game-machine","depth":3},{"value":"On the OpenNeuro Machine","id":"on-the-openneuro-machine","depth":3},{"value":"Recommended Graphs","id":"recommended-graphs","depth":2}],"children":[["$","$L3",null,{}],["$","$L4",null,{"metadata":{"title":"VRChat Audio Routing","filePath":"content/user-manual/vrchat-audio-routing.mdx"},"sourceCode":"$5","children":["$L6","$L7"]}]]}]}],null,"$L8"]}],"loading":null,"isPartial":false}
+6:["$","div",null,{"id":"nextra-skip-nav"}]
+7:["$","main",null,{"data-pagefind-body":true,"children":[["$","h1",null,{"className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-bold x:mt-2 x:text-4xl","children":["VRChat Audio Routing","$undefined"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["This guide explains how to use ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioIn"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioOut"}],", ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioIn"}],", and\n",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioOut"}]," with VB-Cable A+B so OpenNeuro can hear VRChat voice chat and\ntalk back to other players."]}],"\n",["$","h2",null,{"id":"cable-mapping","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Cable Mapping",["$","$L9",null,{"id":"cable-mapping"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Use the two virtual cables like this:"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-A"}]," carries ",["$","strong",null,{"children":"AI speech into VRChat’s microphone"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B"}]," carries ",["$","strong",null,{"children":"VRChat’s game audio into OpenNeuro"}]]}],"\n"]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"The recommended signal flow is:"}],"\n",["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":["$","span",null,{"children":"OpenNeuro AudioOut -> CABLE-A Input -> CABLE-A Output -> VRChat microphone"}]}],"\n",["$","span",null,{"children":["$","span",null,{"children":"Windows default output / VRChat output -> CABLE-B Input -> CABLE-B Output -> OpenNeuro AudioIn"}]}]]}]]}]]}],"\n",["$","h2",null,{"id":"important-vrchat-note","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Important VRChat Note",["$","$L9",null,{"id":"important-vrchat-note"}]]}],"\n",["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["VRChat lets you change the ",["$","strong",null,{"children":"microphone"}]," device, but its ",["$","strong",null,{"children":"output"}]," follows\nthe Windows system playback device. That means:"]}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["Set the VRChat microphone to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-A Output"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Set the Windows default playback device to ","$Lb"]}],"\n"]}],"\n","$Lc","\n","$Ld","\n","$Le","\n","$Lf","\n","$L10","\n","$L11","\n","$L12","\n","$L13","\n","$L14","\n","$L15","\n","$L16","\n","$L17","\n","$L18","\n","$L19","\n","$L1a","\n","$L1b","\n","$L1c","\n","$L1d","\n","$L1e","\n","$L1f","\n","$L20","\n","$L21","\n","$L22","\n","$L23","\n","$L24","\n","$L25","\n","$L26","\n","$L27"]}]
+8:["$","$L28",null,{"children":["$","$29",null,{"name":"Next.MetadataOutlet","children":"$@2a"}]}]
+b:["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Input"}]
+c:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["If you still want to hear the game locally, enable ",["$","strong",null,{"children":"Listen to this device"}]," on\n",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Output"}]," and route it to your real headphones or speakers."]}]
+d:["$","h2",null,{"id":"local-setup","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Local Setup",["$","$L9",null,{"id":"local-setup"}]]}]
+e:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Use this when OpenNeuro and VRChat are running on the ",["$","strong",null,{"children":"same machine"}],"."]}]
+f:["$","h3",null,{"id":"openneuro-components","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["OpenNeuro Components",["$","$L9",null,{"id":"openneuro-components"}]]}]
+10:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Configure the graph like this:"}]
+11:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioIn"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"device"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Output"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sample_rate"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"48000"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"channels"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"2"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"frame_ms"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"20"}]]}],"\n"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioOut"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"device"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-A Input"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sample_rate"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"48000"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"channels"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"1"}]]}],"\n"]}],"\n"]}],"\n"]}]
+12:["$","h3",null,{"id":"vrchat--windows","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["VRChat / Windows",["$","$L9",null,{"id":"vrchat--windows"}]]}]
+13:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["In VRChat, set ",["$","strong",null,{"children":"Microphone"}]," to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-A Output"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["In Windows, set the ",["$","strong",null,{"children":"default playback device"}]," to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Input"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["Optional: enable ",["$","strong",null,{"children":"Listen to this device"}]," on ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Output"}]," so you can\nmonitor game audio through your real headset"]}],"\n"]}]
+14:["$","h2",null,{"id":"remote-setup","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Remote Setup",["$","$L9",null,{"id":"remote-setup"}]]}]
+15:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["Use this when OpenNeuro and VRChat are running on ",["$","strong",null,{"children":"different machines"}],"."]}]
+16:["$","h3",null,{"id":"on-the-game-machine","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["On the Game Machine",["$","$L9",null,{"id":"on-the-game-machine"}]]}]
+17:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Install VB-Cable A+B and start the bridge server:"}]
+18:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"cd"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" backend"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"uv"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" run"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" python"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" -m"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" src.lib.audio.remote_audio_server"}]]}]]}]]}]]}]
+19:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"By default the bridge assumes:"}]
+1a:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"--input-device \"CABLE-B Output\""}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"--output-device \"CABLE-A Input\""}]}],"\n"]}]
+1b:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"If your device names differ, list them first:"}]
+1c:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"cd"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" backend"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"uv"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" run"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" python"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" -m"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" src.lib.audio.remote_audio_server"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" --list-devices"}]]}]]}]]}]]}]
+1d:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Then launch the server with explicit device names if needed:"}]
+1e:["$","div",null,{"data-pagefind-ignore":"all","className":"nextra-code x:relative x:not-first:mt-[1.25em]","children":["$undefined",["$","pre",null,{"className":"x:group x:focus-visible:nextra-focus x:overflow-x-auto x:subpixel-antialiased x:text-[.9em] x:bg-white x:dark:bg-black x:py-4 x:ring-1 x:ring-inset x:ring-gray-300 x:dark:ring-neutral-700 x:contrast-more:ring-gray-900 x:contrast-more:dark:ring-gray-50 x:contrast-more:contrast-150 x:rounded-md not-prose","tabIndex":"0","children":[["$","div",null,{"className":"x:group-hover:opacity-100 x:group-focus:opacity-100 x:opacity-0 x:transition x:focus-within:opacity-100 x:flex x:gap-1 x:absolute x:right-4 x:top-2","children":[["$","$La",null,{"children":["$","svg",null,{"viewBox":"0 0 24 24","fill":"currentColor","height":"1em","children":["$","path",null,{"d":"M4 19h6v-2H4v2zM20 5H4v2h16V5zm-3 6H4v2h13.25c1.1 0 2 .9 2 2s-.9 2-2 2H15v-2l-3 3l3 3v-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4z"}]}]}],false]}],["$","code",null,{"className":"nextra-code","dir":"ltr","children":[["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":"cd"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" backend"}]]}],"\n",["$","span",null,{"children":[["$","span",null,{"style":{"--shiki-light":"#6F42C1","--shiki-dark":"#B392F0"},"children":"uv"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" run"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" python"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" -m"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" src.lib.audio.remote_audio_server"}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" --input-device"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" \"CABLE-B Output (VB-Audio Virtual Cable B)\""}],["$","span",null,{"style":{"--shiki-light":"#005CC5","--shiki-dark":"#79B8FF"},"children":" --output-device"}],["$","span",null,{"style":{"--shiki-light":"#032F62","--shiki-dark":"#9ECBFF"},"children":" \"CABLE-A Input (VB-Audio Virtual Cable A)\""}]]}]]}]]}]]}]
+1f:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Also configure the game machine the same way as the local setup:"}]
+20:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":["In VRChat, set ",["$","strong",null,{"children":"Microphone"}]," to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-A Output"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["In Windows, set the ",["$","strong",null,{"children":"default playback device"}]," to ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"CABLE-B Input"}]]}],"\n"]}]
+21:["$","h3",null,{"id":"on-the-openneuro-machine","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-8 x:text-2xl","children":["On the OpenNeuro Machine",["$","$L9",null,{"id":"on-the-openneuro-machine"}]]}]
+22:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"Point both remote components at the game machine’s bridge:"}]
+23:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioIn"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"server_url"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ws://<game-machine-ip>:8765/ws/audio"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sample_rate"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"48000"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"channels"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"2"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"frame_ms"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"20"}]]}],"\n"]}],"\n"]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioOut"}],"\n",["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"server_url"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ws://<game-machine-ip>:8765/ws/audio"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"sample_rate"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"48000"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"channels"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"1"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"frame_ms"}],": ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"20"}]]}],"\n"]}],"\n"]}],"\n"]}]
+24:["$","h2",null,{"id":"recommended-graphs","className":"x:tracking-tight x:text-slate-900 x:dark:text-slate-100 x:font-semibold x:target:animate-[fade-in_1.5s] x:mt-10 x:border-b x:pb-1 x:text-3xl nextra-border","children":["Recommended Graphs",["$","$L9",null,{"id":"recommended-graphs"}]]}]
+25:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":"For voice-to-voice VRChat flows:"}]
+26:["$","ul",null,{"className":"x:[:is(ol,ul)_&]:my-[.75em] x:not-first:mt-[1.25em] x:list-disc x:ms-[1.5em]","children":["\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioIn"}]," or ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioIn"}]]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"VAD"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"ASR"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"LLM"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":["$","code",null,{"className":"nextra-code","dir":"ltr","children":"TTS"}]}],"\n",["$","li",null,{"className":"x:my-[.5em]","children":[["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioOut"}]," or ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"RemoteAudioOut"}]]}],"\n"]}]
+27:["$","p",null,{"className":"x:not-first:mt-[1.25em] x:leading-7","children":["If your downstream audio stack expects mono, that’s okay: ",["$","code",null,{"className":"nextra-code","dir":"ltr","children":"AudioFrame"}],"\nconversion inside the pipeline will down-mix and resample automatically."]}]
+2a:null
