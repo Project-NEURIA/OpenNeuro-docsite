@@ -1,3 +1,3 @@
 :HL["/_next/static/chunks/eb1a4cfaf3f9f443.css","style"]
 :HC["/",""]
-0:{"buildId":"rY573yml9cCP7CkR1axo3","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"mdxPath","paramType":"oc","paramKey":"user-manual/vrchat-audio-routing","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"V6DgkmHAuWFoC52im76fR","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"mdxPath","paramType":"oc","paramKey":"user-manual/vrchat-audio-routing","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
